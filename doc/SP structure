@@ -1,0 +1,22 @@
+ +-----------------+              +-----------------+           +-----------------+          
+ | terminal client |              | terminal server |           |  web interface  |
+ +-----------------+              +-----------------+           +-----------------+
+  
+  interface (shoes)             terminal server connection          web application
+                                                (druby)                       (rails)
+       |                                 |                              |
+       v                                 v                              |
+                                                                        |        
+  terminal client connection     terminal server                        |
+            (druby)                        (ruby)                       |
+                                         |                              |
+                                         +------------------------------+
+                                                          |
+                                                          v
+                                                      
+                                                     ORM (active record)
+                                                        
+                                                          |
+                                                          v
+                                                          
+                                                     database (MySQL)
