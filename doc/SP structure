@@ -2,11 +2,16 @@
  | terminal client |              | terminal server |           |  web interface  |
  +-----------------+              +-----------------+           +-----------------+
   
-  interface (shoes)             terminal server connection          web application
-                                                (druby)                       (rails)
-       |                                 |                              |
-       v                                 v                              |
-                                                                        |        
+  terminal interface          terminal server connection          web application
+             (shoes)                          (druby)                       (rails)
+       |                                |                               |
+       v                                |                               |
+                                        |                               |        
+  terminal client                       |                               |
+             (ruby)                     |                               |
+       |                                |                               |
+       v                                v                               |
+                                                                        |
   terminal client connection     terminal server                        |
             (druby)                        (ruby)                       |
                                          |                              |
