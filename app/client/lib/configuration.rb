@@ -9,6 +9,8 @@ class Configuration < OpenStruct
   # filename of the config file
   attr_accessor :file
 
+  delegate :merge!, :reverse_update, :reverse_merge!, :to => '@table'
+
   def initialize(file)
     self.file = file.respond_to?(:path) ? file.path : file
     load_configuration
