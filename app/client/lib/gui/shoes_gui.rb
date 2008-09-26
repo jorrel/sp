@@ -1,9 +1,13 @@
+#
+# = Client GUI using _why's Shoes
+#
 class Client
   class ShoesGUI < GUI
+    #
+    # launch the Shoes GUI
+    #
     def launch
-      Shoes.app(:width => 700, :height => 500) {
-        button('push') {
-        }
+      Shoes.app(config.app) {
       }
     end
   end

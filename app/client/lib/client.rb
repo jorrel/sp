@@ -1,3 +1,6 @@
+#
+# Main Client class/namespace
+#
 class Client
   cattr_accessor :connection_type
   cattr_accessor :gui_type
