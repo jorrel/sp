@@ -2,6 +2,7 @@
 # define application root
 #
 AppRoot = File.dirname(__FILE__)
+ConfigRoot = File.join(AppRoot, 'config')
 
 
 #

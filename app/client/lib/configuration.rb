@@ -27,7 +27,7 @@ class Configuration < OpenStruct
   private
 
     def load_configuration
-      marshal_load recursively_symbolize_keys_of( YAML.load( ERB.new( IO.read(file) ).result ) )
+      marshal_load recursively_symbolize_keys_of( YAML.load( ERB.new( IO.read(file) ).result ) || {})
     end
 
     def recursively_symbolize_keys_of(hash)

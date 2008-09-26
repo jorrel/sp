@@ -11,4 +11,5 @@ class Client
       }
     end
   end
+  ShoesGui = ShoesGUI   # alias
 end
