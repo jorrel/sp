@@ -1,4 +1,9 @@
 --- 
+stack1: 
+  width: 100%
 app: 
-  height: 500
-  width: 700
+  height: 400
+  width: 300
+flow1: 
+  margin: 10
+  width: 100%

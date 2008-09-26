@@ -7,7 +7,14 @@ class Client
     # launch the Shoes GUI
     #
     def launch
-      Shoes.app(config.app) {
+      $config = config
+      Shoes.app($config.app = {:width => 300, :height => 400}) {
+        flow($config.flow1 = {:width => '100%', :margin => 10}) {
+          stack($config.stack1 = {:width => '100%'}) {
+            subtitle 'BITS'
+          }
+        }
+        $config.save
       }
     end
   end
