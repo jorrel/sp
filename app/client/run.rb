@@ -1,3 +1,9 @@
 require 'init'
 
-Client::GUI.using(Client.new).launch
+begin
+  Client::GUI.using(Client.new).start
+rescue ::StandardError => e
+  puts e
+  e.application_backtrace.each { |l| puts l }
+  exit(1)
+end

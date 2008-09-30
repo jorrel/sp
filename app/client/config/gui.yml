@@ -1,6 +1,8 @@
 --- 
 stack1: 
   width: 100%
+stack2: 
+  width: 100%
 app: 
   height: 400
   width: 300
