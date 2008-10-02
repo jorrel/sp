@@ -1,13 +1,3 @@
---- 
-stack1: 
-  width: 100%
-app: 
-  height: 400
-  width: 300
-stack2: 
-  width: 100%
-flow1: 
-  margin: 10
-  width: 100%
+---
 gui_type: shoes
 connection_type: druby

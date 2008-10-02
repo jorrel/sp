@@ -26,17 +26,71 @@ class Client
       end
     end
 
-    CONFIG_PATH = File.join(ConfigRoot, 'gui.yml')
-
     attr_accessor :client
     attr_accessor :config
 
+    CONFIG_PATH = File.join(ConfigRoot, 'gui.yml')
+    def config
+      @config ||= Configuration.new(CONFIG_PATH)
+    end
 
     #
     # Launch the application
     #
     def start
       raise 'abstract method'
+    end
+
+    #
+    # The current content of the ID text field
+    #
+    def id_value
+      raise 'abstract method'
+    end
+
+    #
+    # Updates the page with the fetched info
+    #
+    def update_page(info)
+      raise 'abstract method'
+    end
+
+    #
+    # Start fetching info about the student/personel
+    #
+    def perform_query
+      loading do
+        info = fetch_info(id_value)
+        update_page info
+      end
+    end
+
+    #
+    # Fetch data from server through connection
+    #
+    def fetch_info(id_num)
+#       {'id_value' => id_num}  #TODO
+      {}
+    end
+
+    #
+    # Check if the id_value is valid
+    #
+    def valid_id?
+      !! (id_value =~ /^\d{9}$/ or id_value =~ /^\d{4}-\d{5}$/)
+    end
+
+    #
+    # Checks if the id_value is possibly unfinished
+    #
+    def unfinished_id?
+      !! (id_value.sub('-','') =~ /^\d*$/)
+    end
+
+    #
+    # Checks if the id_value is illegal
+    def illegal_id?
+      !(valid_id? or unfinished_id?)
     end
 
     #
@@ -71,7 +125,6 @@ class Client
 
     def initialize(client)
       self.client = client
-      self.config = Configuration.new(CONFIG_PATH)
     end
   end
 

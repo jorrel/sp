@@ -7,19 +7,19 @@ class Client
     # launch the Shoes GUI
     #
     def start
-      $config = config    # Use globals so that I have access to
+      $gui_config = config    # Use globals so that I have access to
 
-      Shoes.app($config.app = {:width => 300, :height => 400}) {
-        flow($config.flow1 = {:width => '100%', :margin => 10}) {
-          stack($config.stack1 = {:width => '100%'}) {
+      Shoes.app($gui_config.app = {:width => 500, :height => 400}) {
+        flow($gui_config.flow1 = {:width => '100%', :margin => 10}) {
+          stack($gui_config.stack1 = {:width => '100%'}) {
             subtitle 'BITS'
-            flow($config.stack2 = {:width => '100%'}) {
+            flow($gui_config.stack2 = {:width => '100%'}) {
               inscription 'ID #: '
               self.id_field = edit_line(:width => 200) { editline_changed }
             }
           }
         }
-        $config.save
+        $gui_config.save
         focus_on_edit_line
       }
     end
@@ -36,11 +36,27 @@ class Client
 
     attr_accessor :id_field
 
+    def id_value
+      id_field.text
+    end
+
     #
     # Called after keypress of editline
     #
     def editline_changed
+        puts "called"
+#         puts (id_field.methods.sort - Object.methods).inspect
+      if valid_id?
+        perform_query
+      elsif illegal_id?
+        alert('Illegal ID')
+      else
+      end
+    end
 
+    def update_page(info)
+      id_field.text = info['id_value'] || ''
+      focus_on_edit_line
     end
 
     # TODO: get this to work
