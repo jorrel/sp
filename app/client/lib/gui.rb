@@ -69,8 +69,7 @@ class Client
     # Fetch data from server through connection
     #
     def fetch_info(id_num)
-#       {'id_value' => id_num}  #TODO
-      {}
+      {'id_value' => id_num}  #TODO
     end
 
     #
