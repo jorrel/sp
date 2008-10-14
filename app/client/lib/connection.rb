@@ -3,6 +3,8 @@
 #
 class Client
   class Connection
+    Status = {:success => 200, :error => 500, :failed => 400}
+
     def self.using(connection_type)
       new_connection_based_on connection_type
     end

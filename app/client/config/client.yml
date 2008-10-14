@@ -1,3 +1,4 @@
 ---
 gui_type: shoes
 connection_type: druby
+environment: dev

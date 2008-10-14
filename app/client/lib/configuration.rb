@@ -43,11 +43,14 @@ class Configuration < OpenStruct
 
   alias :delete :delete_field
 
-  private
+  #
+  # given a hash, load that hash as the configuration
+  #
+  def load_configuration(hash)
+    marshal_load prepare_configuration(hash)
+  end
 
-    def load_configuration(hash)
-      marshal_load prepare_configuration(hash)
-    end
+  private
 
     def prepare_configuration(hash)
       recursively_symbolize_keys_of(hash)

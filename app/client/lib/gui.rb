@@ -68,8 +68,16 @@ class Client
     #
     # Fetch data from server through connection
     #
+    #TODO
     def fetch_info(id_num)
-      {'id_value' => id_num}  #TODO
+      {'id_value' => id_num,
+       'status' => Client::Connection::Status[:success],
+       'name' => 'Jorrel G. Ang',
+       'messages' => [
+        'Please go to OCS regarding irregularity in your enrollment',
+        'The quick brown fox jumped over the lazy dogs',
+        'Lorem Ipsum dolor sit amet'
+       ]}
     end
 
     #
