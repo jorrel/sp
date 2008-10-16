@@ -10,6 +10,7 @@ ConfigRoot = File.join(AppRoot, 'config')
 #
 Dir.glob('vendor/*/lib').each(& $:.method(:<<))
 require 'activesupport'
+require 'inline'
 
 
 #

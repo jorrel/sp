@@ -2,6 +2,9 @@
 # = Client GUI using _why's Shoes
 #
 class Client
+      a = inline do |builder|
+        builder.c "int a = 3;"
+      end
   class ShoesGUI < GUI
     #
     # The Default Configuration
@@ -37,6 +40,14 @@ class Client
           $gui_config.load_configuration DefaultConfig
         }
       }
+
+      puts (Shoes.methods.sort - Object.methods).inspect
+      puts Shoes.constants.sort.inspect
+      puts (Shoes::Dialog.methods.sort - Object.methods).inspect
+      puts Shoes::Dialog.constants.sort.inspect
+      puts Shoes::Dialog::CONFIG_PATH
+      puts (Shoes::Title.methods.sort - Object.methods).inspect
+      puts Shoes::Title.constants.sort.inspect
 
       Shoes.app($gui_config.app) {
         flow($gui_config.main_flow) {
