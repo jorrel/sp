@@ -1,13 +1,9 @@
 class AdminsController < ApplicationController
-  # Be sure to include AuthenticationSystem in Application Controller instead
-  include AuthenticatedSystem
-  
-
   # render new.rhtml
   def new
     @admin = Admin.new
   end
- 
+
   def create
     logout_keeping_session!
     @admin = Admin.new(params[:admin])

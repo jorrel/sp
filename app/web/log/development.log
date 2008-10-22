@@ -15,3 +15,20 @@ Migrating to CreateAdmins (20081022090202)
   [4;35;1mSQL (0.264955)[0m   [0mSHOW FIELDS FROM `admins`[0m
   [4;36;1mSQL (0.001529)[0m   [0;1mdescribe `admins`[0m
   [4;35;1mSQL (0.000741)[0m   [0mSHOW KEYS FROM `admins`[0m
+
+
+Processing DashboardController#index (for 127.0.0.1 at 2008-10-22 17:16:58) [GET]
+  Session ID: a7c5a4edfe250c62cebd6fc467ebca28
+  Parameters: {"action"=>"index", "controller"=>"dashboard"}
+  [4;36;1mSQL (0.040527)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 0.00119 (839 reqs/sec) | DB: 0.04053 (3402%) | 302 Found [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2008-10-22 17:16:58) [GET]
+  Session ID: BAh7BzoOcmV0dXJuX3RvIgYvIgpmbGFzaElDOidBY3Rpb25Db250cm9sbGVy
+OjpGbGFzaDo6Rmxhc2hIYXNoewAGOgpAdXNlZHsA--0b8bfeb52c3051adf2e9929e8437ea8d01b7634e
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+Rendering sessions/new
+Completed in 0.00717 (139 reqs/sec) | Rendering: 0.00280 (39%) | DB: 0.00000 (0%) | 200 OK [http://localhost/session/new]
