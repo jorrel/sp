@@ -9,6 +9,9 @@ class Student < ActiveRecord::Base
     :alumni                 =>  'A'
   }
 
+  validate_presence_of :student_id, :first_name, :last_name
+  validate_uniqueness_of :student_id
+
   class << self
     def find_with_student_id(*args, &block)
       if args.size == 1 and String === args.first and args.first =~ /^\d{4}-\d{5}$/
