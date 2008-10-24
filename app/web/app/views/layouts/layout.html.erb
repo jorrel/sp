@@ -22,10 +22,15 @@
 
         <div id="navigation">
         <ul>
-          <li id="first"><a href="#" title="#">Everyone</a></li>
-          <li><a href="#" title="#">Loves</a></li>
-          <li><a href="#" title="#">Spring</a></li>
-          <li><a href="#" title="#">Do you?</a></li>
+          <li id="first"><%= link_to 'Dashboard', '/' %></li>
+          <li><%= link_to 'Students', '/students' %></li>
+          <li>
+            <% if logged_in? %>
+              <%= link_to 'Log Out', '/logout' %>
+            <% else %>
+              <%= link_to 'Log In', '/login' %>
+            <% end %>
+          </li>
         </ul>
         </div>
         <hr class="noscreen" />
