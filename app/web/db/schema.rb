@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081024065329) do
+ActiveRecord::Schema.define(:version => 20081024071214) do
 
   create_table "admins", :force => true do |t|
     t.string   "login",                     :limit => 40
@@ -24,6 +24,18 @@ ActiveRecord::Schema.define(:version => 20081024065329) do
   end
 
   add_index "admins", ["login"], :name => "index_admins_on_login", :unique => true
+
+  create_table "alerts", :force => true do |t|
+    t.integer  "target_id"
+    t.string   "target_type", :limit => 30
+    t.integer  "admin_id"
+    t.string   "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "alerts", ["target_type", "target_id"], :name => "index_alerts_on_target_type_and_target_id"
+  add_index "alerts", ["admin_id"], :name => "index_alerts_on_admin_id"
 
   create_table "personnels", :force => true do |t|
     t.integer  "personnel_id",               :null => false
