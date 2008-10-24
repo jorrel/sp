@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081022092601) do
+ActiveRecord::Schema.define(:version => 20081024055314) do
 
   create_table "admins", :force => true do |t|
     t.string   "login",                     :limit => 40
@@ -24,5 +24,17 @@ ActiveRecord::Schema.define(:version => 20081022092601) do
   end
 
   add_index "admins", ["login"], :name => "index_admins_on_login", :unique => true
+
+  create_table "students", :force => true do |t|
+    t.integer  "student_id",                                   :null => false
+    t.string   "first_name",    :limit => 30
+    t.string   "middle_name",   :limit => 30
+    t.string   "last_name",     :limit => 30
+    t.string   "record_status", :limit => 1,  :default => "E"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "students", ["student_id"], :name => "index_students_on_student_id"
 
 end
