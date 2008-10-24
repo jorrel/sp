@@ -22,13 +22,14 @@
 
         <div id="navigation">
         <ul>
-          <li id="first"><%= link_to 'Dashboard', '/' %></li>
-          <li><%= link_to 'Students', '/students' %></li>
+          <li id="first"><a href="/">Dashboard</a></li>
+          <li><a href="/students">Students</a></li>
+          <li><a href="/alerts">Alerts</a></li>
           <li>
             <% if logged_in? %>
-              <%= link_to 'Log Out', '/logout' %>
+              <a href="/logout">Log Out</a>
             <% else %>
-              <%= link_to 'Log In', '/login' %>
+              <a href="/login">Log In</a>
             <% end %>
           </li>
         </ul>
