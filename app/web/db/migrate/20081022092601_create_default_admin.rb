@@ -2,7 +2,8 @@ class CreateDefaultAdmin < ActiveRecord::Migration
   def self.up
     Admin.create!(:login => 'admin',
                   :password => 'password',
-                  :password_confirmation => 'password')
+                  :password_confirmation => 'password',
+                  :superadmin => true)
   end
 
   def self.down

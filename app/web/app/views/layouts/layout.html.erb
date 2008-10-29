@@ -25,6 +25,9 @@
           <li id="first"><a href="/">Dashboard</a></li>
           <li><a href="/students">Students</a></li>
           <li><a href="/alerts">Alerts</a></li>
+          <% superadmin do %>
+          <li><a href="/administration">Administration</a></li>
+          <% end %>
           <li>
             <% if logged_in? %>
               <a href="/logout">Log Out</a>

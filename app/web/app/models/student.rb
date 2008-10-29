@@ -9,8 +9,8 @@ class Student < ActiveRecord::Base
     :alumni                 =>  'A'
   }
 
-  validate_presence_of :student_id, :first_name, :last_name
-  validate_uniqueness_of :student_id
+  validates_presence_of :student_id, :first_name, :last_name
+  validates_uniqueness_of :student_id
 
   class << self
     def find_with_student_id(*args, &block)
