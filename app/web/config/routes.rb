@@ -2,6 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => 'dashboard', :action => 'index'
   map.resources :students
   map.resources :alerts
+  map.administration '/administration', :controller => 'administration'
 
 
 
