@@ -1,8 +1,18 @@
 ActionController::Routing::Routes.draw do |map|
+
   map.root :controller => 'dashboard', :action => 'index'
   map.resources :students
   map.resources :alerts
   map.administration '/administration', :controller => 'administration'
+
+
+
+  #
+  # Developer Routes (for testing and stuff)
+  #
+  map.with_options :controller => 'dev', :path_prefix => 'dev' do |dev|
+    dev.flash '/flash/:level/:message', :action => 'demo_flash' #, :controller => 'dev', :path_prefix => 'dev'
+  end
 
 
 
@@ -22,6 +32,7 @@ ActionController::Routing::Routes.draw do |map|
   #
   # default routes
   #
+  map.connect ':controller/:action'
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end

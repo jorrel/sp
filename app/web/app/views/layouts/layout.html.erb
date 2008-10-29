@@ -7,6 +7,7 @@
     <meta name="keywords" content="..." />
     <meta name="robots" content="all,follow" />
     <link href="/stylesheets/screen.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="/stylesheets/flash.css" type="text/css" rel="stylesheet" media="screen,projection" />
 
     <title>BITS &ndash; Web Admin Interface</title>
   </head>
@@ -41,6 +42,12 @@
 
       </div>
 
+      <% flash.each do |level, message| %>
+        <div class="flash <%= level %>" id="flash-<%= level %>">
+          <span><%= message %></span>
+        </div>
+      <% end %>
+
         <div id="main">
 
         <!--
@@ -48,6 +55,8 @@
         <div id="quote">Now every field is clothed with grass, and every tree with leaves; now the woods put forth their blossoms, and the year assumes its gay attire. ~Virgil</div>
         </div>
         -->
+
+
 
         <div id="content">
           <%= yield %>
@@ -112,6 +121,8 @@
           -->
         </div>
 
+
+<br />
         <div id="footer">
         <p id="copyright">&copy; 2008 - <a href="/">Jorrel Ang</a></p>
 
