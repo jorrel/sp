@@ -2,8 +2,8 @@ class AdministrationController < ApplicationController
   before_filter :require_superadmin
 
   def index
-    @admins = Admin.last :limit => 5
-    @terminals = Terminal.last :limit => 5
+    @admins = Admin.recent 5
+    @terminals = Terminal.recent 5
   end
 
   private
