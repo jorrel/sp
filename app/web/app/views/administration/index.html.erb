@@ -1,7 +1,16 @@
 <h2>Administration</h2>
 
 <h3>Recent Admins</h3>
-<%= render :partial => '/admins/list' %>
+<% unless @admins.empty? %>
+  <%= render :partial => '/admins/list' %>
+<% else %>
+  <%= render :partial => '/shared/no_records' %>
+<% end %>
 
 <h3>Recent Terminals</h3>
+<% unless @terminals.empty? %>
+  <%= render :partial => '/terminals/list' %>
+<% else %>
+  <%= render :partial => '/shared/no_records' %>
+<% end %>
 
