@@ -1,0 +1,18 @@
+<% table :id => 'admins' do %>
+  <thead>
+    <tr>
+      <th>Login</th>
+      <th>Real Name</th>
+      <th>Superadmin</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @admins.each do |admin| -%>
+      <% content_tag_for(:tr, admin, :class => cycle(:odd, :even)) do %>
+        <td><%= admin.login %></td>
+        <td></td>
+        <td><%= admin.superadmin? %></td>
+      <% end %>
+    <% end %>
+  </tbody>
+<% end %>
