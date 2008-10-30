@@ -1,8 +1,9 @@
 <h2>Administration</h2>
 
 <h3>Recent Admins</h3>
-<a href="/admins">View All</a>
 <% unless @admins.empty? %>
+  <a href="/admins/new" class="new">Add</a>
+  <a href="/admins" class="list">View All</a>
   <%= render :partial => '/admins/list' %>
 <% else %>
   <%= render :partial => '/shared/no_records' %>
