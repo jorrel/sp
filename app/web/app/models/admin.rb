@@ -37,5 +37,4 @@ class Admin < ActiveRecord::Base
   protected
 
 
-
 end

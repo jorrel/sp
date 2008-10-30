@@ -1,18 +1,44 @@
+/**
+ * flash related styles
+ */
 div.flash {
   padding: 10px 20px 10px 37px;
   width: 100%;
 }
-
 div.flash span {
   color: #FFF;
   font-size: 1.2em;
   font-weight: bold;
 }
-
 div.flash.notice {
   background-color: green;
 }
-
 div.flash.warning {
   background-color: red;
+}
+
+
+
+
+
+/**
+ * tables
+ */
+table tr.even {
+  background-color: #F5FFF5;
+}
+
+table#admins td {
+  text-align: center;
+}
+
+
+
+
+
+p.no-records {
+  padding: 0 5em;
+  color: #888;
+  font-size: 1em;
+  font-style: italic;
 }

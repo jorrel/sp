@@ -1,0 +1,8 @@
+<h2>Admins</h2>
+
+<% unless @admins.empty? %>
+  <%= render :partial => '/admins/list' %>
+  <%= will_paginate @admins %>
+<% else %>
+  <%= render :partial => '/shared/no_records' %>
+<% end %>
