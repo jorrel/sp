@@ -1,19 +1,12 @@
-<h1>Sign up as a new user</h1>
-<% @admin.password = @admin.password_confirmation = nil %>
+<h2>Add a new admin</h2>
 
-<%= error_messages_for :admin %>
-<% form_for :admin, :url => admins_path do |f| -%>
-<p><%= label_tag 'login' %><br/>
-<%= f.text_field :login %></p>
+<% form_tag '/admins' do %>
+  <%= render :partial => 'form' %>
 
-<p><%= label_tag 'email' %><br/>
-<%= f.text_field :email %></p>
+  <div class="form-actions">
+    <%= submit_tag 'Add' %>
+    or
+    <a href="/admins">Cancel</a>
+  </div>
+<% end %>
 
-<p><%= label_tag 'password' %><br/>
-<%= f.password_field :password %></p>
-
-<p><%= label_tag 'password_confirmation', 'Confirm Password' %><br/>
-<%= f.password_field :password_confirmation %></p>
-
-<p><%= submit_tag 'Sign up' %></p>
-<% end -%>

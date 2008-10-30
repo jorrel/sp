@@ -1,17 +1,12 @@
 class AdminsController < ApplicationController
   def index
     @admins = Admin.paginate :page => params[:page] || 1, :order => 'login'
-    logger.info "admins: #{@admins.inspect}"
-    logger.info "total pages: #{WillPaginate::ViewHelpers.total_pages_for_collection(@admins)}"
-     #, :total_entries => Admin.count
-#     raise @admins.inspect
   end
 
-#   # render new.rhtml
-#   def new
-#     @admin = Admin.new
-#   end
-#
+  def new
+    @admin = Admin.new
+  end
+
 #   def create
 #     logout_keeping_session!
 #     @admin = Admin.new(params[:admin])

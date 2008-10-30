@@ -1,0 +1,31 @@
+<%= error_messages_for :admin %>
+
+<% @admin.password = @admin.password_confirmation = nil %>
+
+<% fields_for :admin do |f| %>
+  <p class="left">
+    <%= label_tag 'admin_login', 'Login' %><br/>
+    <%= f.text_field :login %>
+  </p>
+
+  <br class="clear "/>
+
+  <p class="left">
+    <%= label_tag 'admin_password', 'Password' %><br/>
+    <%= f.password_field :password %>
+  </p>
+
+  <p class="right">
+    <%= label_tag 'admin_password_confirmation', 'Confirm Password' %><br/>
+    <%= f.password_field :password_confirmation %>
+  </p>
+
+  <br class="clear "/>
+
+  <p class="left">
+    <%= f.check_box :superadmin %>
+    <%= label_tag 'admin_superadmin', 'Superadmin' %>
+  </p>
+
+  <br class="clear "/>
+<% end %>

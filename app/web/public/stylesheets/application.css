@@ -35,10 +35,28 @@ table#admins td {
 
 
 
+/**
+ * Forms
+ */
+form p {
+  float: left;
+}
+form p.left {
+  width: 350px;
+  clear: left;
+}
+form p.right {
+  width: 350px;
+}
+
+
 
 p.no-records {
   padding: 0 5em;
   color: #888;
   font-size: 1em;
   font-style: italic;
+}
+br.clear {
+  clear: both;
 }
