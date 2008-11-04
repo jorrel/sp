@@ -24,15 +24,19 @@ module Fakerizer
   end
   alias :fake_attrs :fake_attr
 
-  def fake
-    10.maximum_tries { (r = new fake_attrs).valid? and r }
+  def new_fake
+    new fake_attrs
   end
 
-  def fake!
-    f = fake
-    f.save!
-    f
+  def fake
+    10.maximum_tries { (r = new_fake).valid? and r }
   end
+  alias :valid_fake :fake
+
+  def fake!
+    returning(fake) { |f| f.save! }
+  end
+  alias :valid_fake! :fake!
 end
 class ActiveRecord::Base
   extend Fakerizer

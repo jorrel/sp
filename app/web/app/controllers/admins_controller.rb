@@ -9,7 +9,7 @@ class AdminsController < AdministrationController
 
   def create
     @admin = Admin.new(params[:admin].except(:superadmin, :personnel_id))
-    assign_protected_attributes
+    @admin.assign_protected_attributes(params[:admin])
     @admin.save!
     flash[:notice] = "Admin record '#{@admin.login}' saved"
     redirect_to :action => 'index'
@@ -35,11 +35,4 @@ class AdminsController < AdministrationController
 #       render :action => 'new'
 #     end
 #   end
-
-    private
-
-      def assign_protected_attributes
-        @admin.superadmin = params[:admin][:superadmin]
-        @admin.personnel_id = params[:admin][:personnel_id]
-      end
 end

@@ -1,6 +1,7 @@
 <h2>Admins</h2>
 
 <% unless @admins.empty? %>
+  <a href="/admins/new" class="new">Add</a>
   <%= render :partial => '/admins/list' %>
   <%= will_paginate @admins %>
 <% else %>
