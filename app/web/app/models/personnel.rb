@@ -7,7 +7,7 @@ class Personnel < ActiveRecord::Base
     }
   }
 
-  validate_uniqness_of :personnel_id
+  validates_uniqueness_of :personnel_id
 
   class << self
     def to_drop_down
