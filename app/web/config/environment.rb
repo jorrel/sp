@@ -66,5 +66,9 @@ Rails::Initializer.run do |config|
   # config.active_record.observers = :cacher, :garbage_collector
 end
 
+$not_live = %w(development test).include?(ENVIRONMENT)
+
 require 'core_enrichment'
 require 'active_record_enrichment'
+
+require 'faker' if $not_live

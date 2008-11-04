@@ -113,7 +113,7 @@ h5 { font-size:100%; }
       width: 300px;
       }
 
-      #dont-delete-this{
+      #dont-delete-this, #designer-acknowledgement {
       margin: 0 0 0 323px;
       text-align: right;
       }
