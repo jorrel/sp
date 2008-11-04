@@ -1,4 +1,4 @@
-class AdminsController < ApplicationController
+class AdminsController < AdministrationController
   def index
     @admins = Admin.paginate :page => params[:page] || 1, :order => 'login'
   end
