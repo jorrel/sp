@@ -1,6 +1,8 @@
 class AdminsController < AdministrationController
   def index
-    @admins = Admin.paginate :page => params[:page] || 1, :order => 'updated_at DESC'
+    options = {:order => 'updated_at DESC'}
+    options[:joins] = 'JOIN personnels ON personnels.personnel_id = admins.personnel_id' if params[:sort] and params[:sort] =~ /name/
+    @admins = paginate :admins, options
   end
 
   def new

@@ -1,10 +1,10 @@
 <% table :id => 'admins' do %>
   <thead>
     <tr class="table-top">
-      <th>Login</th>
-      <th>Real Name</th>
-      <th>Superadmin</th>
-      <th>Last Updated</th>
+      <th><%= sort_link 'Login', 'login' %></th>
+      <th><%= sort_link 'Real Name', 'last_name, first_name' %></th>
+      <th><%= sort_link 'Superadmin', 'superadmin' %></th>
+      <th><%= sort_link 'Last Updated', 'updated_at DESC', :default => true %></th>
     </tr>
   </thead>
   <tbody>
