@@ -1,10 +1,21 @@
 class AdminsController < AdministrationController
   def index
-    @admins = Admin.paginate :page => params[:page] || 1, :order => 'login'
+    @admins = Admin.paginate :page => params[:page] || 1, :order => 'updated_at DESC'
   end
 
   def new
     @admin = Admin.new
+  end
+
+  def create
+    @admin = Admin.new(params[:admin].except(:superadmin, :personnel_id))
+    assign_protected_attributes
+    @admin.save!
+    flash[:notice] = "Admin record '#{@admin.login}' saved"
+    redirect_to :action => 'index'
+  rescue ActiveRecord::RecordInvalid
+    flash.now[:warning] = "This record cannot be saved because of invalid values"
+    render :action => 'new'
   end
 
 #   def create
@@ -24,4 +35,11 @@ class AdminsController < AdministrationController
 #       render :action => 'new'
 #     end
 #   end
+
+    private
+
+      def assign_protected_attributes
+        @admin.superadmin = params[:admin][:superadmin]
+        @admin.personnel_id = params[:admin][:personnel_id]
+      end
 end

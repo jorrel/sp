@@ -34,6 +34,17 @@ class Admin < ActiveRecord::Base
     write_attribute :login, (value ? value.downcase : nil)
   end
 
+  def personnel(reload = false)
+    if (reload or !@personnel) and !(personnel_id.blank?)
+      @personnel = Personnel.find_by_personnel_id(personnel_id)
+    end
+    @personnel
+  end
+
+  def name(reversed = false)
+    (personnel and personnel.name(reversed)) || ''
+  end
+
   protected
 
 

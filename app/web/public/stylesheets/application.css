@@ -51,6 +51,33 @@ form p.right {
 
 
 
+/**
+ * Validation Errors
+ */
+#errorExplanation {
+  border: 1px solid red;
+  padding: 1em;
+  margin-bottom: 1em;
+}
+#errorExplanation h3 {
+  color: red;
+}
+#errorExplanation ul {
+  clear: left;
+}
+form span.field-with-errors input,
+form span.field-with-errors select,
+form span.field-with-errors textarea {
+  border: 2px solid red;
+}
+form span.field-error-detail {
+  color: red;
+  font-size: 0.9em;
+  font-style: italic;
+}
+
+
+
 p.no-records {
   padding: 0 5em;
   color: #888;

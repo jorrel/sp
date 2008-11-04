@@ -11,8 +11,16 @@ class Personnel < ActiveRecord::Base
     def to_drop_down
       find(:all, :select => 'personnel_id, first_name, last_name',
                  :order => 'last_name, first_name').collect do |p|
-        ["#{p.first_name} #{p.last_name} (#{p.personnel_id})", p.personnel_id]
+        ["#{p.name(true)} (#{p.personnel_id})", p.personnel_id]
       end
+    end
+  end
+
+  def name(reversed = false)
+    if reversed
+      "#{last_name}, #{first_name}"
+    else
+      "#{first_name} #{last_name}"
     end
   end
 end
