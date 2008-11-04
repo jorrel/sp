@@ -1,13 +1,23 @@
-ListSorting
-===========
-
-Introduction goes here.
+== ListSorting
+  Easily create links for sorting a list of records.
 
 
-Example
-=======
-
-Example goes here.
+== Requirements
+  Requires will_paginate
 
 
-Copyright (c) 2008 [name of plugin creator], released under the MIT license
+== Example
+  #Controller
+  class UsersController < ApplicationController
+    def index
+      @users = paginate :users, :order => 'login'   # default ordering
+    end
+  end
+
+  #View
+  <!--               label   column   this is the default sort    -->
+  <th><%= sort_link('Login', 'login', :default => true) %></th>
+  <th><%= sort_link('Last Changed', 'updated_at DESC') %></th>
+
+
+Copyright (c) 2008 Jorrel Ang, released under the MIT license
