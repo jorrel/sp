@@ -7,6 +7,8 @@ class Personnel < ActiveRecord::Base
     }
   }
 
+  validate_uniqness_of :personnel_id
+
   class << self
     def to_drop_down
       find(:all, :select => 'personnel_id, first_name, last_name',
