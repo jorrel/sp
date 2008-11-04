@@ -27,5 +27,10 @@
     <%= label_tag 'admin_superadmin', 'Superadmin' %>
   </p>
 
+  <p class="right">
+    <%= label_tag 'admin_personnel_id', 'Personnel' %><br />
+    <%= f.select :personnel_id, Personnel.to_drop_down, :include_blank => true %>
+  </p>
+
   <br class="clear "/>
 <% end %>
