@@ -1,8 +1,12 @@
+#
+# No tests for this plugin
+#
+# Use at your own risk
+#
+
 require 'test/unit'
 
 class ListSortingTest < Test::Unit::TestCase
-  # Replace this with your real tests.
-  def test_this_plugin
-    flunk
+  def test_nothing
   end
 end
