@@ -25,6 +25,6 @@ class ApplicationController < ActionController::Base
     helper_method :superadmin?
 
     def page_not_found
-      redirect_to '/404'
+      render :text => File.read(File.join(RAILS_ROOT, 'public', '404.html'))
     end
 end
