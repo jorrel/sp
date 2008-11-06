@@ -1,0 +1,11 @@
+<h2>Edit this terminal</h2>
+
+<% form_tag terminal_path(@terminal), :method => :put do %>
+  <%= render :partial => 'form' %>
+
+  <div class="form-actions">
+    <%= submit_tag 'Update' %>
+    or
+    <a href="/terminals">Cancel</a>
+  </div>
+<% end %>

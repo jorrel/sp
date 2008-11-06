@@ -18,7 +18,7 @@
         <td><%= terminal.ip_address %></td>
         <td><%= display_time terminal.updated_at %></td>
         <td class="actions">
-          <%#= link_to 'Edit', edit_terminal_path(terminal) %>
+          <%= link_to 'Edit', edit_terminal_path(terminal) %>
           <%= link_to 'Delete', delete_terminal_path(terminal) %>
         </td>
       <% end %>

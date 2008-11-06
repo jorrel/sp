@@ -19,6 +19,16 @@ class TerminalsController < ApplicationController
     render :action => 'new'
   end
 
+  def update
+    @terminal.attributes = params[:terminal]
+    @terminal.save!
+    flash[:notice] = "Admin record '#{@terminal.name}' updated"
+    redirect_to :action => 'index'
+  rescue ActiveRecord::RecordInvalid
+    flash.now[:warning] = "The record cannot be updated because of invalid values"
+    render :action => 'edit'
+  end
+
   def destroy
     @terminal.destroy
     flash[:notice] = "Admin record '#{@terminal.name}' deleted"
