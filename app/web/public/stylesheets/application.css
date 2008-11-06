@@ -11,10 +11,11 @@ div.flash span {
   font-weight: bold;
 }
 div.flash.notice {
-  background-color: green;
+/*   background-color: green; */
+  background-color: #82FFA0;
 }
 div.flash.warning {
-  background-color: red;
+  background-color: #FF82A0;
 }
 
 
@@ -23,7 +24,7 @@ div.flash.warning {
  * Box css overrides
  */
 .box .boxcontent {
-  padding: 1em;
+  padding: 2em;
 }
 .prompt-box.box .boxcontent {
   padding: 1em 2em;
@@ -55,11 +56,11 @@ form p {
   float: left;
 }
 form p.left {
-  width: 350px;
+  width: 300px;
   clear: left;
 }
 form p.right {
-  width: 350px;
+  width: 300px;
 }
 form span.form-field-hint {
   color: #AAA;

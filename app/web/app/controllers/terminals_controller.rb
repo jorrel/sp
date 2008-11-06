@@ -9,6 +9,16 @@ class TerminalsController < ApplicationController
     @terminal = Terminal.new
   end
 
+  def create
+    @terminal = Terminal.new(params[:terminal])
+    @terminal.save!
+    flash[:notice] = "Terminal record #{@terminal.name} saved"
+    redirect_to :action => 'index'
+  rescue ActiveRecord::RecordInvalid
+    flash.now[:warning] = "This record cannot be saved because of invalid values"
+    render :action => 'new'
+  end
+
   private
 
     def find_terminal

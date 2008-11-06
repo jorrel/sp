@@ -1,0 +1,33 @@
+<% roundedbox :class => 'green' do %>
+  <% fields_for :terminal do |f| %>
+    <p class="left">
+      <%= label_tag 'terminal_name', 'Name' %>
+      <br />
+      <%= f.text_field :name %>
+    </p>
+
+    <p class="right">
+      <%= label_tag 'terminal_description', 'Description' %>
+      <br />
+      <%= f.text_field :description %>
+    </p>
+
+    <br class="clear" />
+
+    <p class="left">
+      <%= label_tag 'terminal_college', 'College' %>
+      <span class="form-field-hint">College Initial</span>
+      <br />
+      <%= f.text_field :college %>
+    </p>
+
+    <p class="right">
+      <%= label_tag 'terminal_ip_address', 'IP Address' %>
+      <span class="form-field-hint">IPv4 dot-decimal format (a.b.c.d)</span>
+      <br />
+      <%= f.text_field :ip_address %>
+    </p>
+
+    <br class="clear "/>
+  <% end %>
+<% end %>

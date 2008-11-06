@@ -1,0 +1,24 @@
+<% table :id => 'terminals' do %>
+  <thead>
+    <tr class="table-top">
+      <th class="name"><%= sort_link 'Name', 'name' %></th>
+      <th class="description"><%= sort_link 'Description', 'description' %></th>
+      <th class="college"><%= sort_link 'College', 'college' %></th>
+      <th class="ip-address"><%= sort_link 'IP Address', 'ip_address' %></th>
+      <th class="last-updated"><%= sort_link 'Last Updated', 'updated_at DESC', :default => true %></th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @terminals.each do |terminal| -%>
+      <% content_tag_for(:tr, terminal, :class => cycle(:odd, :even)) do %>
+        <td><%= terminal.name %></td>
+        <td><%= terminal.description %></td>
+        <td><%= terminal.college %></td>
+        <td><%= terminal.ip_address %></td>
+        <td><%= display_time terminal.updated_at %></td>
+        <td>&nbsp;</td>
+      <% end %>
+    <% end %>
+  </tbody>
+<% end %>

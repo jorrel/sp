@@ -1,0 +1,10 @@
+<h2>Terminals</h2>
+
+<a href="/terminals/new" class="new">Add</a>
+
+<% unless @terminals.empty? %>
+  <%= render :partial => '/terminals/list' %>
+  <%= will_paginate @terminals %>
+<% else %>
+  <%= render :partial => '/shared/no_records' %>
+<% end %>

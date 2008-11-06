@@ -1,0 +1,12 @@
+<h2>Add a new terminal</h2>
+
+<% form_tag '/terminals' do %>
+  <%= render :partial => 'form' %>
+
+  <div class="form-actions">
+    <%= submit_tag 'Add' %>
+    or
+    <a href="/terminals">Cancel</a>
+  </div>
+<% end %>
+
