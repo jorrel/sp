@@ -1,8 +1,8 @@
 <h2>Administration</h2>
 
 <h3>Recent Admins</h3>
+<a href="/admins/new" class="new">Add</a>
 <% unless @admins.empty? %>
-  <a href="/admins/new" class="new">Add</a>
   <a href="/admins" class="list">View All</a>
   <%= render :partial => '/admins/list' %>
 <% else %>
@@ -10,7 +10,9 @@
 <% end %>
 
 <h3>Recent Terminals</h3>
+<a href="/terminals/new" class="new">Add</a>
 <% unless @terminals.empty? %>
+  <a href="/terminals" class="list">View All</a>
   <%= render :partial => '/terminals/list' %>
 <% else %>
   <%= render :partial => '/shared/no_records' %>
