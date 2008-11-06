@@ -13,6 +13,24 @@ module ApplicationHelper
       time.strftime(strformat)
     end
   end
+
+  def prompt(html_options = {}, &block)
+    html_options[:class] = 'prompt-box orange'
+    roundedbox(html_options, &block)
+  end
+
+  # altered from Cyril's implementation
+  def roundedbox(html_options = {}, &block)
+    html_options[:class] = ['box', html_options[:class]].compact.join(' ')
+    box = <<-MARKUP
+      <div #{tag_options(html_options)}>
+        <div class="boxtop"><div>&nbsp;</div></div>
+        <div class="boxcontent">#{capture(&block)}</div>
+        <div class="boxbottom"><div>&nbsp;</div></div>
+      </div>
+    MARKUP
+    concat(box, block.binding)
+  end
 end
 
 #

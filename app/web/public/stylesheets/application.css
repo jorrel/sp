@@ -19,6 +19,19 @@ div.flash.warning {
 
 
 
+/**
+ * Box css overrides
+ */
+.box .boxcontent {
+  padding: 1em;
+}
+.prompt-box.box .boxcontent {
+  padding: 1em 2em;
+}
+.box.yellow-green {
+  background: #C0E13A;
+}
+
 
 
 /**

@@ -1,43 +1,45 @@
 <%# @admin.password = @admin.password_confirmation = nil %>
 
-<% fields_for :admin do |f| %>
-  <p class="left">
-    <%= label_tag 'admin_login', 'Login' %>
-    <br/>
-    <%= f.text_field :login %>
-  </p>
+<% roundedbox :class => 'green' do %>
+  <% fields_for :admin do |f| %>
+    <p class="left">
+      <%= label_tag 'admin_login', 'Login' %>
+      <br/>
+      <%= f.text_field :login %>
+    </p>
 
-  <br class="clear "/>
+    <br class="clear "/>
 
-  <p class="left">
-    <%= label_tag 'admin_password', 'Password' %>
-    <% unless @admin.new_record? %>
-      <span class="form-field-hint">
-        Leave blank to remain unchanged
-      </span>
-    <% end %>
-    <br/>
-    <%= f.password_field :password %>
-  </p>
+    <p class="left">
+      <%= label_tag 'admin_password', 'Password' %>
+      <% unless @admin.new_record? %>
+        <span class="form-field-hint">
+          Leave blank to remain unchanged
+        </span>
+      <% end %>
+      <br/>
+      <%= f.password_field :password %>
+    </p>
 
-  <p class="right">
-    <%= label_tag 'admin_password_confirmation', 'Confirm Password' %>
-    <br/>
-    <%= f.password_field :password_confirmation %>
-  </p>
+    <p class="right">
+      <%= label_tag 'admin_password_confirmation', 'Confirm Password' %>
+      <br/>
+      <%= f.password_field :password_confirmation %>
+    </p>
 
-  <br class="clear "/>
+    <br class="clear "/>
 
-  <p class="left">
-    <%= f.check_box :superadmin %>
-    <%= label_tag 'admin_superadmin', 'Superadmin' %>
-  </p>
+    <p class="left">
+      <%= f.check_box :superadmin %>
+      <%= label_tag 'admin_superadmin', 'Superadmin' %>
+    </p>
 
-  <p class="right">
-    <%= label_tag 'admin_personnel_id', 'Personnel' %>
-    <br />
-    <%= f.select :personnel_id, Personnel.to_drop_down, :include_blank => true %>
-  </p>
+    <p class="right">
+      <%= label_tag 'admin_personnel_id', 'Personnel' %>
+      <br />
+      <%= f.select :personnel_id, Personnel.to_drop_down, :include_blank => true %>
+    </p>
 
-  <br class="clear "/>
+    <br class="clear "/>
+  <% end %>
 <% end %>
