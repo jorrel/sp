@@ -1,0 +1,15 @@
+<h2>Delete '<%= @terminal.name %>'</h2>
+
+<% prompt do %>
+  <% form_tag terminal_path(@terminal), :method => :delete do %>
+    <label>Really delete this record?</label>
+
+    <div class="form-actions">
+      <%= submit_tag 'Delete' %>
+      or
+      <a href="/admins">Cancel</a>
+    </div>
+  <% end %>
+<% end %>
+
+<%= render :partial => '/terminals/summary' %>

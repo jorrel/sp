@@ -19,6 +19,12 @@ class TerminalsController < ApplicationController
     render :action => 'new'
   end
 
+  def destroy
+    @terminal.destroy
+    flash[:notice] = "Admin record '#{@terminal.name}' deleted"
+    redirect_to :action => 'index'
+  end
+
   private
 
     def find_terminal

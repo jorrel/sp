@@ -1,0 +1,22 @@
+<div class="summary" id="terminal-summary">
+  <table>
+    <thead>
+      <tr class="table-top">
+        <th>Name</th>
+        <th>Description</th>
+        <th>College</th>
+        <th>IP Address</th>
+        <th>Last Updated</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @terminal.name %></td>
+        <td><%= @terminal.description %></td>
+        <td><%= @terminal.college %></td>
+        <td><%= @terminal.ip_address %></td>
+        <td><%= display_time @terminal.updated_at %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
