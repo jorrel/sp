@@ -5,6 +5,7 @@
       <th><%= sort_link 'Real Name', 'last_name, first_name' %></th>
       <th><%= sort_link 'Superadmin', 'superadmin' %></th>
       <th><%= sort_link 'Last Updated', 'updated_at DESC', :default => true %></th>
+      <th>&nbsp;</th>
     </tr>
   </thead>
   <tbody>
@@ -14,6 +15,10 @@
         <td><%= admin.name %></td>
         <td><%= admin.superadmin?.humanize %></td>
         <td><%= display_time admin.updated_at %></td>
+        <td class="actions">
+          <%= link_to 'Edit', edit_admin_path(admin) %>
+          <%= link_to 'Delete', delete_admin_path(admin) %>
+        </td>
       <% end %>
     <% end %>
   </tbody>

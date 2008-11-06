@@ -1,0 +1,11 @@
+<h2>Edit this admin</h2>
+
+<% form_tag admin_path(@admin), :method => :put do %>
+  <%= render :partial => 'form' %>
+
+  <div class="form-actions">
+    <%= submit_tag 'Update' %>
+    or
+    <a href="/admins">Cancel</a>
+  </div>
+<% end %>

@@ -11,6 +11,8 @@ class ApplicationController < ActionController::Base
 
   layout 'layout'
 
+  rescue_from ActiveRecord::RecordNotFound, :with => :page_not_found
+
   protected
     def superadmin
       yield if superadmin?
@@ -21,4 +23,8 @@ class ApplicationController < ActionController::Base
       !! (logged_in? and current_admin.superadmin?)
     end
     helper_method :superadmin?
+
+    def page_not_found
+      redirect_to '/404'
+    end
 end

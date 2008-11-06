@@ -1,4 +1,6 @@
 class AdminsController < AdministrationController
+  before_filter :find_admin, :only => [:edit, :update, :delete, :destroy, :show]
+
   def index
     options = {:order => 'updated_at DESC'}
     options[:joins] = 'JOIN personnels ON personnels.personnel_id = admins.personnel_id' if params[:sort] and params[:sort] =~ /name/
@@ -20,6 +22,23 @@ class AdminsController < AdministrationController
     render :action => 'new'
   end
 
+  def update
+    @admin.attributes = params[:admin].except(:superadmin, :personnel_id)
+    @admin.assign_protected_attributes(params[:admin])
+    @admin.save!
+    flash[:notice] = "Admin record '#{@admin.login}' updated"
+    redirect_to :action => 'index'
+  rescue ActiveRecord::RecordInvalid
+    flash.now[:warning] = "The record cannot be updated because of invalid values"
+    render :action => 'edit'
+  end
+
+  def destroy
+    @admin.destroy
+    flash[:notice] = "Admin record '#{@admin.login}' deleted"
+    redirect_to :action => 'index'
+  end
+
 #   def create
 #     logout_keeping_session!
 #     @admin = Admin.new(params[:admin])
@@ -37,4 +56,10 @@ class AdminsController < AdministrationController
 #       render :action => 'new'
 #     end
 #   end
+
+  private
+
+    def find_admin
+      @admin = Admin.find(params[:id])
+    end
 end

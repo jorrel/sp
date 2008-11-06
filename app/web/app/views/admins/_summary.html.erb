@@ -1,0 +1,20 @@
+<div class="summary" id="admin-summary">
+  <table>
+    <thead>
+      <tr class="table-top">
+        <th>Login</th>
+        <th>Real Name</th>
+        <th>Superadmin</th>
+        <th>Last Updated</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @admin.login %></td>
+        <td><%= @admin.name %></td>
+        <td><%= @admin.superadmin?.humanize %></td>
+        <td><%= display_time @admin.updated_at %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

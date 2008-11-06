@@ -48,6 +48,16 @@ form p.left {
 form p.right {
   width: 350px;
 }
+form span.form-field-hint {
+  color: #AAA;
+  font-style: italic;
+}
+form span.form-field-hint:before {
+  content: '('
+}
+form span.form-field-hint:after {
+  content: ')'
+}
 
 
 

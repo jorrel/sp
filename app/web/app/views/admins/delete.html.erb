@@ -1,0 +1,13 @@
+<h2>Delete '<%= @admin.login %>'</h2>
+
+<% form_tag admin_path(@admin), :method => :delete do %>
+  <label>Really delete this record?</label>
+
+  <div class="form-actions">
+    <%= submit_tag 'Delete' %>
+    or
+    <a href="/admins">Cancel</a>
+  </div>
+<% end %>
+
+<%= render :partial => '/admins/summary' %>
