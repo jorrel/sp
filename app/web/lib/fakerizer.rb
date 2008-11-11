@@ -29,7 +29,7 @@ module Fakerizer
   end
 
   def fake
-    10.maximum_tries { (r = new_fake).valid? and r }
+    20.maximum_tries { (r = new_fake).valid? and r }
   end
   alias :valid_fake :fake
 

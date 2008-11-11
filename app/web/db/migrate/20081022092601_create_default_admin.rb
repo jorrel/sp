@@ -1,4 +1,7 @@
 class CreateDefaultAdmin < ActiveRecord::Migration
+  # or run
+  # rake fakes:admin
+  #
   def self.up
     admin = Admin.new(:login => 'admin',
                       :password => 'password',
