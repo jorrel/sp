@@ -6,7 +6,7 @@
         <th class="description"><%= sort_link 'Description', 'description' %></th>
         <th class="college"><%= sort_link 'College', 'college' %></th>
         <th class="ip-address"><%= sort_link 'IP Address', 'ip_address' %></th>
-        <th class="last-updated"><%= sort_link 'Last Updated', 'updated_at DESC', :default => true %></th>
+        <th class="last-updated"><%= sort_link 'Last Updated', 'updated_at DESC' %></th>
       <% else %>
         <th class="name">Name</th>
         <th class="description">Description</th>
@@ -26,8 +26,8 @@
         <td><%= terminal.ip_address %></td>
         <td><%= display_time terminal.updated_at %></td>
         <td class="actions">
-          <%= link_to 'Edit', edit_terminal_path(terminal) %>
-          <%= link_to 'Delete', delete_terminal_path(terminal) %>
+          <%= link_to span('Edit'), edit_terminal_path(terminal), :class => 'edit', :title => 'edit' %>
+          <%= link_to span('Delete'), delete_terminal_path(terminal), :class => 'delete', :title => 'delete' %>
         </td>
       <% end %>
     <% end %>

@@ -3,7 +3,7 @@ body, div, span, p, a, img, ul, ol, li, table, th, tr, td, form, fieldset, legen
 body {
   padding: 0;
   background: #fff url('/images/bg.jpg') repeat-x;
-  font: 0.8em/1.5 "arial",sans-serif;
+  font: 0.8em/1.5 "arial",helvetica,sans-serif;
   color: #303030;
   text-align: center;
 }

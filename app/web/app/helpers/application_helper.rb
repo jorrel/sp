@@ -5,6 +5,10 @@ module ApplicationHelper
     content_tag(:table, html_options, &block)
   end
 
+  def span(content, html_options = {})
+    content_tag(:span, content, html_options)
+  end
+
   def display_time(time, strformat = Time::DATE_FORMATS[:short])
     time = time.in_time_zone('Asia/Manila')
     if strformat.respond_to?(:call)

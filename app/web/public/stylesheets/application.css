@@ -11,7 +11,6 @@ div.flash span {
   font-weight: bold;
 }
 div.flash.notice {
-/*   background-color: green; */
   background-color: #82FFA0;
 }
 div.flash.warning {
@@ -42,7 +41,7 @@ table tr.even {
   background-color: #F5FFF5;
 }
 
-table#admins td {
+table#admins td, table#students td, table#terminals {
   text-align: center;
 }
 
@@ -98,6 +97,68 @@ form span.field-error-detail {
   color: red;
   font-size: 0.9em;
   font-style: italic;
+}
+
+
+
+/**
+ * Link icons
+ */
+a.new, a.list, a.cancel {
+  padding: 2px 10px 2px 20px;
+  background-position: left center;
+  background-repeat: no-repeat;
+}
+a.new {
+  background-image: url(/images/icons/add.png);
+}
+a.list {
+  background-image: url(/images/icons/application_view_list.png);
+}
+
+
+
+/**
+ * Action icons
+ */
+td.actions {
+  white-space: nowrap;
+  text-align: center;
+  width: 40px;
+}
+.actions a {
+  background-position: top left;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  display: block;
+  float: left;
+}
+.actions a span {
+  display: none;
+}
+.actions a.edit {
+  background-image: url(/images/icons/pencil.png);
+}
+.actions a.delete {
+  background-image: url(/images/icons/bin.png);
+}
+
+
+
+/**
+ * Sort icons
+ */
+.current-sort {
+  background-position: right center;
+  background-repeat: no-repeat;
+  padding-right: 18px;
+}
+.current-sort.asc {
+  background-image: url(/images/icons/bullet_arrow_up.png);
+}
+.current-sort.desc {
+  background-image: url(/images/icons/bullet_arrow_down.png);
 }
 
 
