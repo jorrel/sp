@@ -1,0 +1,21 @@
+<% table :id => 'students' do %>
+  <thead>
+    <tr class="table-top">
+      <th class="student-id"><%= sort_link 'Student ID', 'student_id' %></th>
+      <th class="login"><%= sort_link 'Name', 'last_name, first_name' %></th>
+      <th class="last-updated"><%= sort_link 'Last Updated', 'updated_at' %></th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @students.each do |student| -%>
+      <% content_tag_for(:tr, student, :class => cycle(:odd, :even)) do %>
+        <td><%= student.student_id %></td>
+        <td><%= student.name %></td>
+        <td><%= display_time student.updated_at %></td>
+        <td class="actions">
+        </td>
+      <% end %>
+    <% end %>
+  </tbody>
+<% end %>

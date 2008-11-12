@@ -1,2 +1,9 @@
 <h2>Students</h2>
-<a href="/students/new" class="new">Add</a>
+
+<% unless @students.empty? %>
+  <%= render :partial => '/students/list' %>
+  <%= will_paginate @students %>
+<% else %>
+  <%= render :partial => '/shared/no_records' %>
+<% end %>
+

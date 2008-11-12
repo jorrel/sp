@@ -34,4 +34,12 @@ class Student < ActiveRecord::Base
   def to_param
     student_id || id
   end
+
+  def name(reversed = false)
+    if reversed
+      "#{last_name}, #{first_name}"
+    else
+      "#{first_name} #{last_name}"
+    end
+  end
 end
