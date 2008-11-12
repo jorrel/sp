@@ -21,12 +21,14 @@ namespace :fakes do
   end
 
   task :admin do
-    admin = Admin.find_by_login('admin') || Admin.new
-    admin.attributes = {:login => 'admin',
-                        :password => 'password',
-                        :password_confirmation => 'password'}
-    admin.superadmin = true # protected attribute
-    admin.save!
+    generating('default admin') {
+      admin = Admin.find_by_login('admin') || Admin.new
+      admin.attributes = {:login => 'admin',
+                          :password => 'password',
+                          :password_confirmation => 'password'}
+      admin.superadmin = true # protected attribute
+      admin.save!
+    }
   end
 
   task :terminals do
@@ -41,6 +43,6 @@ namespace :fakes do
     }
   end
 
-  task :all => [:admin, :admins, :terminals, :students] do
+  task :all => [:admins, :admin, :terminals, :students] do
   end
 end

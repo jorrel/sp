@@ -1,11 +1,19 @@
 <% table :id => 'terminals' do %>
   <thead>
     <tr class="table-top">
-      <th class="name"><%= sort_link 'Name', 'name' %></th>
-      <th class="description"><%= sort_link 'Description', 'description' %></th>
-      <th class="college"><%= sort_link 'College', 'college' %></th>
-      <th class="ip-address"><%= sort_link 'IP Address', 'ip_address' %></th>
-      <th class="last-updated"><%= sort_link 'Last Updated', 'updated_at DESC', :default => true %></th>
+      <% if TerminalsController === @controller %>
+        <th class="name"><%= sort_link 'Name', 'name' %></th>
+        <th class="description"><%= sort_link 'Description', 'description' %></th>
+        <th class="college"><%= sort_link 'College', 'college' %></th>
+        <th class="ip-address"><%= sort_link 'IP Address', 'ip_address' %></th>
+        <th class="last-updated"><%= sort_link 'Last Updated', 'updated_at DESC', :default => true %></th>
+      <% else %>
+        <th class="name">Name</th>
+        <th class="description">Description</th>
+        <th class="college">College</th>
+        <th class="ip-address">IP Address</th>
+        <th class="last-updated">Last Updated</th>
+      <% end %>
       <th>&nbsp;</th>
     </tr>
   </thead>

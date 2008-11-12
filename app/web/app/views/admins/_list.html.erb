@@ -1,11 +1,18 @@
 <% table :id => 'admins' do %>
   <thead>
     <tr class="table-top">
-      <th class="login"><%= sort_link 'Login', 'login' %></th>
-      <th class="real-name"><%= sort_link 'Real Name', 'last_name, first_name' %></th>
-      <th class="superadmin"><%= sort_link 'Superadmin', 'superadmin' %></th>
-      <th class="last-updated"><%= sort_link 'Last Updated', 'updated_at DESC', :default => true %></th>
-      <th>&nbsp;</th>
+      <% if AdminsController === @controller %>
+        <th class="login"><%= sort_link 'Login', 'login' %></th>
+        <th class="real-name"><%= sort_link 'Real Name', 'last_name, first_name' %></th>
+        <th class="superadmin"><%= sort_link 'Superadmin', 'superadmin' %></th>
+        <th class="last-updated"><%= sort_link 'Last Updated', 'updated_at DESC', :default => true %></th>
+      <% else %>
+        <th class="login">Login</th>
+        <th class="real-name">Real Name</th>
+        <th class="superadmin">Superadmin</th>
+        <th class="last-updated">Last Updated</th>
+      <% end %>
+        <th>&nbsp;</th>
     </tr>
   </thead>
   <tbody>
