@@ -68,4 +68,3 @@ end
 
 require 'core_enrichment'
 require 'active_record_enrichment'
-require 'fakerizer'

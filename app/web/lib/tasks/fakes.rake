@@ -1,6 +1,5 @@
-
-require "environment"
-require "spinner"
+require 'spinner'
+require 'faked_models'
 
 namespace :fakes do
   def generating(what, &block)
@@ -36,6 +35,12 @@ namespace :fakes do
     }
   end
 
-  task :all => [:admins, :terminals] do
+  task :students do
+    generating('students') {
+      1000.times { Student.fake! }
+    }
+  end
+
+  task :all => [:admin, :admins, :terminals, :students] do
   end
 end

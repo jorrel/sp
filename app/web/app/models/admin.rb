@@ -38,20 +38,6 @@ class Admin < ActiveRecord::Base
 
 
 
-  fake_attrs {
-    personnel = Personnel.random
-    {
-      :login => personnel.first_name.underscore,
-      :password => personnel.first_name.underscore,
-      :password_confirmation => personnel.first_name.underscore,
-      :superadmin => [false,false,false,false,true].rand,
-      :personnel_id => personnel.personnel_id
-    }
-  }
-  def self.new_fake # override to set protected attributes
-    returning(new(attrs = fake_attrs)) { |f| f.assign_protected_attributes attrs }
-  end
-
   def personnel(reload = false)
     if (reload or !@personnel) and !(personnel_id.blank?)
       @personnel = Personnel.find_by_personnel_id(personnel_id)

@@ -1,12 +1,4 @@
 class Personnel < ActiveRecord::Base
-  fake_attrs {
-    {
-      :first_name => Faker::Name.first_name,
-      :last_name => Faker::Name.last_name,
-      :personnel_id => Faker.numerify("#{(1990..2008).to_a.rand}#####")
-    }
-  }
-
   validates_uniqueness_of :personnel_id
 
   class << self
