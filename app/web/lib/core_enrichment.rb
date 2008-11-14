@@ -1,8 +1,6 @@
 #
 # Improvements (a.k.a. "Enrichments") to Ruby's core objects
 #
-# @author: Jorrel Ang
-# @version: 8.11.04
 module CoreEnrichments
 
 
