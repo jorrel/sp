@@ -1,9 +1,10 @@
 class StudentsController < ApplicationController
-  before_filter :find_student, :only => [:show, :edit, :destroy]
+  before_filter :find_student, :only => [:show, :edit, :delete, :destroy]
+  before_filter :require_superadmin, :only => [:new, :create, :edit, :delete, :destroy]
 
   def index
     @students = Student.find(:all)
-    @students = paginate :students, :order => 'last_name, first_name, middle_name'
+    @students = paginate :students, :order => 'updated_at DESC'
   end
 
   def new
@@ -14,13 +15,13 @@ class StudentsController < ApplicationController
   end
 
   def create
-    @student = Student.create! params[:student]
+    @student = Student.new params[:student]
+    @student.save!
+    flash[:notice] = "Student record '#{@student.name}' saved"
+    redirect_to :action => 'index'
   rescue ActiveRecord::RecordInvalid
-    flash[:warning] = 'Invalid Record'
+    flash.now[:warning] = "This record cannot be saved because of invalid values"
     render :action => 'new'
-  else
-    flash[:success] = 'New Student created'
-    redirect_to student_path(@student)
   end
 
   def edit

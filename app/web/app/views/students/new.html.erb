@@ -1,0 +1,12 @@
+<h2>Add a new student</h2>
+
+<% form_tag '/students' do %>
+  <%= render :partial => 'form' %>
+
+  <div class="form-actions">
+    <%= submit_tag 'Add' %>
+    or
+    <a href="/students">Cancel</a>
+  </div>
+<% end %>
+

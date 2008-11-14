@@ -1,5 +1,9 @@
 <h2>Students</h2>
 
+<% superadmin do %>
+  <a href="/students/new" class="new">Add</a>
+<% end %>
+
 <% unless @students.empty? %>
   <%= render :partial => '/students/list' %>
   <%= will_paginate @students %>

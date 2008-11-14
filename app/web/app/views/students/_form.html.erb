@@ -1,0 +1,40 @@
+<% roundedbox :class => 'green' do %>
+  <% fields_for :student do |f| %>
+    <p class="left">
+      <%= label_tag 'student_student_id', 'Student ID' %>
+      <br/>
+      <%= f.text_field :student_id %>
+    </p>
+
+    <br class="clear "/>
+
+    <p class="left">
+      <%= label_tag 'student_last_name', 'Last Name' %>
+      <br/>
+      <%= f.text_field :last_name %>
+    </p>
+
+    <p class="right">
+      <%= label_tag 'student_first_name', 'First Name' %>
+      <br/>
+      <%= f.text_field :first_name %>
+    </p>
+
+    <br class="clear "/>
+
+    <p class="left">
+      <%= label_tag 'student_middle_name', 'Middle Name' %>
+      <br />
+      <%= f.text_field :middle_name %>
+    </p>
+
+    <br class="clear "/>
+
+    <p class="left">
+      <%= label_tag 'student_record_status', 'Record Status' %>
+      <%= f.select :record_status, Student::RecordStatusForDropDown %>
+    </p>
+
+    <br class="clear "/>
+  <% end %>
+<% end %>

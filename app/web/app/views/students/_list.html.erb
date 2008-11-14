@@ -2,9 +2,11 @@
   <thead>
     <tr class="table-top">
       <th class="student-id"><%= sort_link 'Student ID', 'student_id' %></th>
-      <th class="login"><%= sort_link 'Name', 'last_name, first_name', :default => true %></th>
-      <th class="last-updated"><%= sort_link 'Last Updated', 'updated_at' %></th>
+      <th class="login"><%= sort_link 'Name', 'last_name, first_name' %></th>
+      <th class="last-updated"><%= sort_link 'Last Updated', 'updated_at DESC', :default => true %></th>
+      <% superadmin do %>
       <th>&nbsp;</th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
@@ -13,8 +15,12 @@
         <td><%= student.student_id %></td>
         <td><%= student.name %></td>
         <td><%= display_time student.updated_at %></td>
+        <% superadmin do %>
         <td class="actions">
+          <%= link_to span('Edit'), edit_student_path(student), :class => 'edit', :title => 'edit' %>
+          <%= link_to span('Delete'), delete_student_path(student), :class => 'delete', :title => 'delete' %>
         </td>
+        <% end %>
       <% end %>
     <% end %>
   </tbody>

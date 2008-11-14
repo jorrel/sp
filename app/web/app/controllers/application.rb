@@ -27,4 +27,11 @@ class ApplicationController < ActionController::Base
     def page_not_found
       render :text => File.read(File.join(RAILS_ROOT, 'public', '404.html'))
     end
+
+    def require_superadmin
+      if not superadmin?
+        flash[:warning] = 'The area you were trying to access required superadmin previledges'
+        redirect_to '/'
+      end
+    end
 end
