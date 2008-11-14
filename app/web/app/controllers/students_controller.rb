@@ -4,7 +4,7 @@ class StudentsController < ApplicationController
 
   def index
     @students = Student.find(:all)
-    @students = paginate :students, :order => 'updated_at DESC'
+    @students = paginate :students, :order => 'last_name, first_name'
   end
 
   def new
