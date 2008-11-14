@@ -70,3 +70,4 @@ require 'core_enrichment'
 require 'active_record_enrichment'
 
 ListSorting.encoded = true
+ListSorting.sort_parameter = :s
