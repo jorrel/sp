@@ -1,28 +1,33 @@
-<h1>Log In</h1>
+<h2>Log In</h2>
 
-<% form_tag session_path do -%>
-<p>
-  <%= label_tag 'login' %>
-  <br />
-  <%= text_field_tag 'login', @login %>
-</p>
+<% roundedbox :class => 'green', :id => 'login-page' do -%>
+  <% form_tag session_path do -%>
+    <p>
+      <%= label_tag 'login' %>
+      <br />
+      <%= text_field_tag 'login', @login %>
+    </p>
 
-<br class="clear" />
+    <br class="clear" />
 
-<p>
-  <%= label_tag 'password' %>
-  <br/>
-  <%= password_field_tag 'password', nil %>
-</p>
+    <p>
+      <%= label_tag 'password' %>
+      <br/>
+      <%= password_field_tag 'password', nil %>
+    </p>
 
-<br class="clear" />
+    <br class="clear" />
 
-<p>
-  <%= label_tag 'remember_me', 'Remember me' %>
-  <%= check_box_tag 'remember_me', '1', @remember_me %>
-</p>
+    <p>
+      <%= label_tag 'remember_me', 'Remember me' %>
+      <%= check_box_tag 'remember_me', '1', @remember_me %>
+    </p>
 
-<br class="clear" />
+    <br class="clear" />
 
-<p><%= submit_tag 'Log in' %></p>
+    <p><%= submit_tag 'Log in' %></p>
+
+    <br class="clear" />
+
+  <% end -%>
 <% end -%>
