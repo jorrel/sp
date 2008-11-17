@@ -3,7 +3,10 @@ class AdminsController < AdministrationController
 
   def index
     options = {:order => 'updated_at DESC'}
-    options[:joins] = 'JOIN personnels ON personnels.personnel_id = admins.personnel_id' if params[:sort] and params[:sort] =~ /name/
+    if sort = ListSorting.extract_sort_field_from(params) and sort =~ /name/
+      options[:joins] = 'JOIN personnels ON personnels.personnel_id = admins.personnel_id'
+    end
+
     @admins = paginate :admins, options
   end
 
