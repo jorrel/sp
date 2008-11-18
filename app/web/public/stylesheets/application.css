@@ -9,12 +9,29 @@ div.flash span {
   color: #FFF;
   font-size: 1.2em;
   font-weight: bold;
+  background-repeat: no-repeat;
+  background-position: left center;
+  padding-left: 20px;
 }
 div.flash.notice {
   background-color: #82FFA0;
 }
+div.flash.notice span {
+  background-color: #82FFA0;
+  background-image: url(/images/icons/accept.png);
+}
 div.flash.warning {
   background-color: #FF82A0;
+}
+div.flash.warning span {
+  background-color: #FF82A0;
+  background-image: url(/images/icons/exclamation.png);
+}
+div.flash.error {
+  background-color: #111111;
+}
+div.flash.error span {
+  background-image: url(/images/icons/cancel.png);
 }
 
 
