@@ -9,6 +9,7 @@ class CreateAlerts < ActiveRecord::Migration
     end
     add_index :alerts, [:target_type, :target_id]
     add_index :alerts, :admin_id
+    add_index :alerts, :updated_at
   end
 
   def self.down

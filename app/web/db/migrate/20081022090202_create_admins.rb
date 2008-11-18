@@ -15,6 +15,9 @@ class CreateAdmins < ActiveRecord::Migration
 
     end
     add_index :admins, :login, :unique => true
+    add_index :admins, :updated_at
+    add_index :admins, :personnel_id
+    add_index :admins, :superadmin
   end
 
   def self.down

@@ -7,6 +7,8 @@ class CreatePersonnels < ActiveRecord::Migration
       t.column :last_name, :string, :limit => 30
       t.timestamps
     end
+    add_index :personnels, :updated_at
+    add_index :personnels, [:last_name, :first_name, :middle_name]
   end
 
   def self.down
