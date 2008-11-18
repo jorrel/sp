@@ -17,3 +17,13 @@ Object.extend(Function.prototype, {
 });
 
 
+
+var focusOnFirstFormElement = function() {
+  var scope = $('content') || document.body;
+  var forms = scope.getElementsBySelector('form');
+  if(forms.any()) {
+    var fields = forms[0].getElementsBySelector('input[type=text]');
+    if(fields.any()) fields[0].select();
+  }
+}
+focusOnFirstFormElement.runOnLoad();
