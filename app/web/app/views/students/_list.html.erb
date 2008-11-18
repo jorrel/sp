@@ -2,7 +2,7 @@
   <thead>
     <tr class="table-top">
       <th class="student-id"><%= sort_link 'Student ID', 'student_id' %></th>
-      <th class="login"><%= sort_link 'Name', 'last_name, first_name', :default => true %></th>
+      <th class="login"><%= sort_link 'Name', 'last_name, first_name, middle_name', :default => true %></th>
       <th class="last-updated"><%= sort_link 'Last Updated', 'updated_at DESC' %></th>
       <% superadmin do %>
       <th>&nbsp;</th>

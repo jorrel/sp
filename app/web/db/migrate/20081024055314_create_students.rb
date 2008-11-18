@@ -9,6 +9,7 @@ class CreateStudents < ActiveRecord::Migration
       t.timestamps
     end
     add_index :students, :student_id
+    add_index :students, [:last_name, :first_name, :middle_name]
   end
 
   def self.down

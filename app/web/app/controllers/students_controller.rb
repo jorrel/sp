@@ -3,8 +3,7 @@ class StudentsController < ApplicationController
   before_filter :require_superadmin, :only => [:new, :create, :edit, :delete, :destroy]
 
   def index
-    @students = Student.find(:all)
-    @students = paginate :students, :order => 'last_name, first_name'
+    @students = paginate :students, :order => 'last_name, first_name, middle_name'
   end
 
   def new
