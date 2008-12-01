@@ -1,5 +1,6 @@
 class AdminsController < AdministrationController
   before_filter :find_admin, :only => [:edit, :update, :delete, :destroy, :show]
+  non_superadmin_action :index
 
   def index
     options = {:order => 'updated_at DESC'}

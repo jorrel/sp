@@ -1,1 +1,32 @@
 <h2>Dashboard</h2>
+
+<h3>Your Recently Posted Alerts</h3>
+<a href="/alerts/new" class="new">Add</a>
+<a href="/alerts" class="list">View All</a>
+<% unless @alerts.empty? %>
+  <%= render :partial => '/alerts/list' %>
+<% else %>
+  <%= render :partial => '/shared/no_records' %>
+<% end %>
+
+<h3>Recent Admins</h3>
+<% superadmin do %>
+  <a href="/admins/new" class="new">Add</a>
+<% end %>
+<% unless @admins.empty? %>
+  <a href="/admins" class="list">View All</a>
+  <%= render :partial => '/admins/list' %>
+<% else %>
+  <%= render :partial => '/shared/no_records' %>
+<% end %>
+
+<h3>Recent Terminals</h3>
+<% superadmin do %>
+  <a href="/terminals/new" class="new">Add</a>
+<% end %>
+<% unless @terminals.empty? %>
+  <a href="/terminals" class="list">View All</a>
+  <%= render :partial => '/terminals/list' %>
+<% else %>
+  <%= render :partial => '/shared/no_records' %>
+<% end %>

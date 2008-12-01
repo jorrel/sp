@@ -1,6 +1,8 @@
 <h2>Terminals</h2>
 
-<a href="/terminals/new" class="new">Add</a>
+<% superadmin do %>
+  <a href="/terminals/new" class="new">Add</a>
+<% end %>
 
 <% unless @terminals.empty? %>
   <%= render :partial => '/terminals/list' %>

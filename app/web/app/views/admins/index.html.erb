@@ -1,6 +1,8 @@
 <h2>Admins</h2>
 
-<a href="/admins/new" class="new">Add</a>
+<% superadmin do %>
+  <a href="/admins/new" class="new">Add</a>
+<% end %>
 
 <% unless @admins.empty? %>
   <%= render :partial => '/admins/list' %>

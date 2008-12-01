@@ -1,5 +1,6 @@
 class TerminalsController < AdministrationController
   before_filter :find_terminal, :only => [:edit, :update, :delete, :destroy, :show]
+  non_superadmin_action :index
 
   def index
     @terminals = paginate :terminals, :order => 'updated_at DESC'

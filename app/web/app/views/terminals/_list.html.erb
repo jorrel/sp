@@ -14,7 +14,10 @@
         <th class="ip-address">IP Address</th>
         <th class="last-updated">Last Updated</th>
       <% end %>
-      <th>&nbsp;</th>
+
+      <% superadmin do %>
+        <th>&nbsp;</th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
@@ -25,10 +28,12 @@
         <td><%= terminal.college %></td>
         <td><%= terminal.ip_address %></td>
         <td><%= display_time terminal.updated_at %></td>
-        <td class="actions">
-          <%= link_to span('Edit'), edit_terminal_path(terminal), :class => 'edit', :title => 'edit' %>
-          <%= link_to span('Delete'), delete_terminal_path(terminal), :class => 'delete', :title => 'delete' %>
-        </td>
+        <% superadmin do %>
+          <td class="actions">
+            <%= link_to span('Edit'), edit_terminal_path(terminal), :class => 'edit', :title => 'edit' %>
+            <%= link_to span('Delete'), delete_terminal_path(terminal), :class => 'delete', :title => 'delete' %>
+          </td>
+        <% end %>
       <% end %>
     <% end %>
   </tbody>

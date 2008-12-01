@@ -12,7 +12,10 @@
         <th class="superadmin">Superadmin</th>
         <th class="last-updated">Last Updated</th>
       <% end %>
+
+      <% superadmin do %>
         <th>&nbsp;</th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
@@ -22,10 +25,12 @@
         <td><%= admin.name %></td>
         <td><%= admin.superadmin?.humanize %></td>
         <td><%= display_time admin.updated_at %></td>
-        <td class="actions">
-          <%= link_to span('Edit'), edit_admin_path(admin), :class => 'edit', :title => 'edit' %>
-          <%= link_to span('Delete'), delete_admin_path(admin), :class => 'delete', :title => 'delete' %>
-        </td>
+        <% superadmin do %>
+          <td class="actions">
+            <%= link_to span('Edit'), edit_admin_path(admin), :class => 'edit', :title => 'edit' %>
+            <%= link_to span('Delete'), delete_admin_path(admin), :class => 'delete', :title => 'delete' %>
+          </td>
+        <% end %>
       <% end %>
     <% end %>
   </tbody>
