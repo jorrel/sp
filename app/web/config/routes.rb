@@ -2,7 +2,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.root :controller => 'dashboard', :action => 'index'
   map.resources :students, :member => {:delete => :get}
-  map.resources :alerts, :member => {:delete => :get}
+  map.resources :alerts, :member => {:delete => :get}, :collection => {:update_form => :post}
   map.resources :terminals, :member => {:delete => :get}
   map.administration '/administration', :controller => 'administration'
 

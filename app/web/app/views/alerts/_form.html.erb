@@ -1,0 +1,15 @@
+<% roundedbox :class => 'green' do %>
+  <%= render :partial => 'target_form' %>
+
+  <br class="clear" />
+
+  <% fields_for :alert do |f| %>
+    <p>
+      <%= label_tag 'alert_message', 'Message' %>
+      <br/>
+      <%= f.text_area :message, :rows => 5, :cols => 50 %>
+    </p>
+
+    <br class="clear "/>
+  <% end %>
+<% end %>

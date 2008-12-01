@@ -1,1 +1,10 @@
 <h2>Alerts</h2>
+
+<a href="/alerts/new" class="new">Add</a>
+
+<% unless @alerts.empty? %>
+  <%= render :partial => '/alerts/list' %>
+  <%= will_paginate @alerts %>
+<% else %>
+  <%= render :partial => '/shared/no_records' %>
+<% end %>

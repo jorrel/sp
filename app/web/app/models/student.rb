@@ -34,6 +34,13 @@ class Student < ActiveRecord::Base
         raise ActiveRecord::RecordNotFound, "No student with student id of #{student_id}"
       end
     end
+
+    def to_drop_down
+      find(:all, :select => 'student_id, first_name, last_name',
+                 :order => 'last_name, first_name, middle_name').collect do |s|
+        ["#{s.name(true)} (#{s.student_id})", s.student_id]
+      end
+    end
   end
 
   def to_param
@@ -46,5 +53,9 @@ class Student < ActiveRecord::Base
     else
       "#{first_name} #{last_name}"
     end
+  end
+
+  def to_s
+    name
   end
 end

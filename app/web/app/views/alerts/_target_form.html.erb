@@ -1,0 +1,12 @@
+<% fields_for :alert do |f| %>
+  <p id="target_form">
+    <%= label_tag 'alert_target_id', 'Message for' %>
+    <br />
+    <%=
+      f.select 'target_type', Alert::TargetTypesForDropDown, {},
+        :onchange => remote_function(:url => {:action => 'update_form'},
+                                     :with => "'target_type=' + $F(this)")
+    %>
+    <%= f.select 'target_id', @alert.target_class.to_drop_down %>
+  </p>
+<% end %>

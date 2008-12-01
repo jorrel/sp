@@ -1,0 +1,23 @@
+<% table :id => 'alerts' do %>
+  <thead>
+    <tr class="table-top">
+      <th class="target">Student / Personnel</th>
+      <th class="message">Message</th>
+      <th class="post-date">Date Posted</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @alerts.each do |alert| -%>
+      <% content_tag_for(:tr, alert, :class => cycle(:odd, :even)) do %>
+        <td><%= alert.target %></td>
+        <td><%= h alert.message %></td>
+        <td><%= display_time alert.updated_at %></td>
+        <td class="actions">
+          <%= link_to span('Edit'), edit_alert_path(alert), :class => 'edit', :title => 'edit' %>
+          <%= link_to span('Delete'), delete_alert_path(alert), :class => 'delete', :title => 'delete' %>
+        </td>
+      <% end %>
+    <% end %>
+  </tbody>
+<% end %>
