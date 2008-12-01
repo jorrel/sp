@@ -26,14 +26,13 @@ module ApplicationHelper
   # altered from Cyril's implementation
   def roundedbox(html_options = {}, &block)
     html_options[:class] = ['box', html_options[:class]].compact.join(' ')
-    box = <<-MARKUP
+    concat <<-MARKUP
       <div #{tag_options(html_options)}>
         <div class="boxtop"><div>&nbsp;</div></div>
         <div class="boxcontent">#{capture(&block)}</div>
         <div class="boxbottom"><div>&nbsp;</div></div>
       </div>
     MARKUP
-    concat(box, block.binding)
   end
 
   def submit_cancel_pair(submit_name = nil, cancel_link = nil)
