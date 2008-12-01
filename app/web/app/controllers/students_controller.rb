@@ -38,10 +38,10 @@ class StudentsController < ApplicationController
     render :action => 'edit'
   end
 
-  def edit
-  end
-
   def destroy
+    @student.destroy
+    flash[:notice] = "Student record '#{@student.name}' deleted"
+    redirect_to :action => 'index'
   end
 
   private

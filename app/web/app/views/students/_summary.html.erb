@@ -1,0 +1,18 @@
+<div class="summary" id="student-summary">
+  <table>
+    <thead>
+      <tr class="table-top">
+        <th>Student ID</th>
+        <th>Name</th>
+        <th>Last Updated</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @student.student_id %></td>
+        <td><%= @student.name %></td>
+        <td><%= display_time @student.updated_at %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
