@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
   layout 'layout'
 
   rescue_from ActiveRecord::RecordNotFound, :with => :page_not_found
+  rescue_from ActiveRecord::RecordInvalid, :with => :record_invalid
 
   protected
     def superadmin
@@ -24,8 +25,21 @@ class ApplicationController < ActionController::Base
     end
     helper_method :superadmin?
 
-    def page_not_found
+    def page_not_found(exception)
       render :text => File.read(File.join(RAILS_ROOT, 'public', '404.html'))
+    end
+
+    def record_invalid(exception)
+      case params[:action]
+      when 'create'
+        flash.now[:warning] = 'This record cannot be saved because of invalid values'
+        render :action => 'new'
+      when 'update'
+        flash.now[:warning] = 'The record cannot be updated because of invalid values'
+        render :action => 'edit'
+      else
+        raise exception
+      end
     end
 
     def require_superadmin

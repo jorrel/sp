@@ -14,9 +14,6 @@ class TerminalsController < ApplicationController
     @terminal.save!
     flash[:notice] = "Terminal record #{@terminal.name} saved"
     redirect_to :action => 'index'
-  rescue ActiveRecord::RecordInvalid
-    flash.now[:warning] = "This record cannot be saved because of invalid values"
-    render :action => 'new'
   end
 
   def update
@@ -24,9 +21,6 @@ class TerminalsController < ApplicationController
     @terminal.save!
     flash[:notice] = "Admin record '#{@terminal.name}' updated"
     redirect_to :action => 'index'
-  rescue ActiveRecord::RecordInvalid
-    flash.now[:warning] = "The record cannot be updated because of invalid values"
-    render :action => 'edit'
   end
 
   def destroy

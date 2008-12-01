@@ -20,9 +20,6 @@ class AdminsController < AdministrationController
     @admin.save!
     flash[:notice] = "Admin record '#{@admin.login}' saved"
     redirect_to :action => 'index'
-  rescue ActiveRecord::RecordInvalid
-    flash.now[:warning] = "This record cannot be saved because of invalid values"
-    render :action => 'new'
   end
 
   def update
@@ -31,9 +28,6 @@ class AdminsController < AdministrationController
     @admin.save!
     flash[:notice] = "Admin record '#{@admin.login}' updated"
     redirect_to :action => 'index'
-  rescue ActiveRecord::RecordInvalid
-    flash.now[:warning] = "The record cannot be updated because of invalid values"
-    render :action => 'edit'
   end
 
   def destroy
