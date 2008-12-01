@@ -1,0 +1,20 @@
+<div class="summary" id="alert-summary">
+  <table>
+    <thead>
+      <tr class="table-top">
+        <th>Student / Personnel</th>
+        <th>Message</th>
+        <th>Date Posted</th>
+        <th>By</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @alert.target %></td>
+        <td><%= h @alert.message %></td>
+        <td><%= display_time @alert.updated_at %></td>
+        <td><%= @alert.admin %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

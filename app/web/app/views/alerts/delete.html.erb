@@ -1,0 +1,11 @@
+<h2>Delete Alert for '<%= @alert.target %>'</h2>
+
+<% prompt do %>
+  <% form_tag alert_path(@alert), :method => :delete do %>
+    <label>Really delete this record?</label>
+
+    <%= submit_cancel_pair %>
+  <% end %>
+<% end %>
+
+<%= render :partial => '/alerts/summary' %>

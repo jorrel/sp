@@ -37,7 +37,7 @@ class AlertsController < ApplicationController
 
   def destroy
     @alert.destroy
-    flash[:notice] = "Alert record '#{@alert.login}' deleted"
+    flash[:notice] = "Alert for '#{@alert.target}' deleted"
     redirect_to :action => :index
   end
 
