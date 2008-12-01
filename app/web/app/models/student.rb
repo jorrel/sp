@@ -37,7 +37,7 @@ class Student < ActiveRecord::Base
   end
 
   def to_param
-    student_id || id
+    (student_id || id).to_s
   end
 
   def name(reversed = false)
