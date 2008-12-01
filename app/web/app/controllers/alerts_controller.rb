@@ -2,9 +2,7 @@ class AlertsController < ApplicationController
   before_filter :find_alert, :only => [:edit, :update, :destroy, :delete, :show]
 
   def index
-    options = {:order => 'updated_at DESC'}
-
-    @alerts = paginate :alerts, options
+    @alerts = paginate :alerts, :order => 'updated_at DESC'
   end
 
   def new
@@ -39,6 +37,12 @@ class AlertsController < ApplicationController
     @alert.destroy
     flash[:notice] = "Alert for '#{@alert.target}' deleted"
     redirect_to :action => :index
+  end
+
+  def by_admin
+    @admin = params[:login] ? Admin.find_by_login(params[:login]) : current_admin
+    redirect_to :action => :index unless @admin
+    @alerts = paginate @admin.alerts, :order => 'updated_at DESC'
   end
 
   private

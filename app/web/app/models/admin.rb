@@ -38,6 +38,8 @@ class Admin < ActiveRecord::Base
 
 
 
+  has_many :alerts
+
   def personnel(reload = false)
     if (reload or !@personnel) and !(personnel_id.blank?)
       @personnel = Personnel.find_by_personnel_id(personnel_id)

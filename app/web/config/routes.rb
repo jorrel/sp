@@ -5,6 +5,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :alerts, :member => {:delete => :get}, :collection => {:update_form => :post}
   map.resources :terminals, :member => {:delete => :get}
   map.administration '/administration', :controller => 'administration'
+  map.admin_alerts '/alerts/by/:login', :controller => 'alerts', :action => 'by_admin'
 
 
 

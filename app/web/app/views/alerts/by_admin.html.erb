@@ -1,7 +1,7 @@
-<h2>Alerts</h2>
+<h2>Alerts by <%= (@admin == current_admin) ? 'You' : "'#{@admin.login}'" %></h2>
 
 <a href="/alerts/new" class="new">Add</a>
-<a href="<%= admin_alerts_path(current_admin.login) %>" class="list">Alerts By Me</a>
+<a href="/alerts" class="list">View All</a>
 
 <% unless @alerts.empty? %>
   <%= render :partial => '/alerts/list' %>
