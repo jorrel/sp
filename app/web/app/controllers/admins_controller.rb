@@ -14,12 +14,16 @@ class AdminsController < AdministrationController
     @admin = Admin.new
   end
 
+  def show
+    redirect_to :action => :edit
+  end
+
   def create
     @admin = Admin.new(params[:admin].except(:superadmin, :personnel_id))
     @admin.assign_protected_attributes(params[:admin])
     @admin.save!
     flash[:notice] = "Admin record '#{@admin.login}' saved"
-    redirect_to :action => 'index'
+    redirect_to :action => :index
   end
 
   def update
@@ -27,13 +31,13 @@ class AdminsController < AdministrationController
     @admin.assign_protected_attributes(params[:admin])
     @admin.save!
     flash[:notice] = "Admin record '#{@admin.login}' updated"
-    redirect_to :action => 'index'
+    redirect_to :action => :index
   end
 
   def destroy
     @admin.destroy
     flash[:notice] = "Admin record '#{@admin.login}' deleted"
-    redirect_to :action => 'index'
+    redirect_to :action => :index
   end
 
   private

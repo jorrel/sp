@@ -33,10 +33,10 @@ class ApplicationController < ActionController::Base
       case params[:action]
       when 'create'
         flash.now[:warning] = 'This record cannot be saved because of invalid values'
-        render :action => 'new'
+        render :action => :new
       when 'update'
         flash.now[:warning] = 'The record cannot be updated because of invalid values'
-        render :action => 'edit'
+        render :action => :edit
       else
         raise exception
       end
