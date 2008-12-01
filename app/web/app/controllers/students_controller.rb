@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-  before_filter :find_student, :only => [:show, :edit, :delete, :destroy]
+  before_filter :find_student, :only => [:show, :edit, :update, :delete, :destroy]
   before_filter :require_superadmin, :only => [:new, :create, :edit, :delete, :destroy]
 
   def index
@@ -11,6 +11,11 @@ class StudentsController < ApplicationController
   end
 
   def show
+    superadmin do
+      redirect_to :action => 'edit'
+      return
+    end
+    redirect_to :action => 'list'
   end
 
   def create
@@ -21,6 +26,16 @@ class StudentsController < ApplicationController
   rescue ActiveRecord::RecordInvalid
     flash.now[:warning] = "This record cannot be saved because of invalid values"
     render :action => 'new'
+  end
+
+  def update
+    @student.attributes = params[:student]
+    @student.save!
+    flash[:notice] = "Admin record '#{@student.name}' updated"
+    redirect_to :action => 'index'
+  rescue ActiveRecord::RecordInvalid
+    flash.now[:warning] = "The record cannot be updated because of invalid values"
+    render :action => 'edit'
   end
 
   def edit

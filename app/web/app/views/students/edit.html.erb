@@ -1,0 +1,11 @@
+<h2>Edit this student</h2>
+
+<% form_tag student_path(@student), :method => :put do %>
+  <%= render :partial => 'form' %>
+
+  <div class="form-actions">
+    <%= submit_tag 'Update' %>
+    or
+    <a href="/students">Cancel</a>
+  </div>
+<% end %>
