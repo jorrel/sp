@@ -3,10 +3,12 @@ class AlertsController < ApplicationController
 
   def index
     @alerts = paginate :alerts, :order => 'updated_at DESC'
+    fresh_when :etag => @alerts.first, :last_modified => @alerts.first.updated_at.utc
   end
 
   def new
     @alert = Alert.new
+    fresh_when :etag => @alert, :last_modified => Student.recent.updated_at.utc
   end
 
   def update_form

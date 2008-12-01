@@ -4,6 +4,7 @@ class StudentsController < ApplicationController
 
   def index
     @students = paginate :students, :order => 'last_name, first_name, middle_name'
+    fresh_when :etag => @students, :last_modified => @students.map(&:updated_at).compact.sort.last.utc
   end
 
   def new
