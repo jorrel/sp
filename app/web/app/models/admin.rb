@@ -54,4 +54,8 @@ class Admin < ActiveRecord::Base
     self.superadmin = attrs[:superadmin]
     self.personnel_id = attrs[:personnel_id]
   end
+
+  def to_s
+    personnel ? name : login
+  end
 end

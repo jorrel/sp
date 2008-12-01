@@ -58,7 +58,7 @@ table tr.even {
   background-color: #F5FFF5;
 }
 
-table#admins td, table#students td, table#terminals {
+table#admins td, table#students td, table#terminals td, table#alerts td {
   text-align: center;
 }
 

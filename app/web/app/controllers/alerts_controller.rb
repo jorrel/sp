@@ -21,8 +21,29 @@ class AlertsController < ApplicationController
 
   def create
     @alert = Alert.new(params[:alert])
+    @alert.admin = current_admin
     @alert.save!
     flash[:notice] = "Alert for '#{@alert.target}' saved"
     redirect_to :action => :index
   end
+
+  def update
+    @alert.attributes = params[:alert]
+    @alert.admin = current_admin
+    @alert.save!
+    flash[:notice] = "Alert for '#{@alert.target}' updated"
+    redirect_to :action => :index
+  end
+
+  def destroy
+    @alert.destroy
+    flash[:notice] = "Alert record '#{@alert.login}' deleted"
+    redirect_to :action => :index
+  end
+
+  private
+
+    def find_alert
+      @alert = Alert.find(params[:id])
+    end
 end

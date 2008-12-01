@@ -4,6 +4,7 @@
       <th class="target">Student / Personnel</th>
       <th class="message">Message</th>
       <th class="post-date">Date Posted</th>
+      <th class="poster">By</th>
       <th>&nbsp;</th>
     </tr>
   </thead>
@@ -13,6 +14,7 @@
         <td><%= alert.target %></td>
         <td><%= h alert.message %></td>
         <td><%= display_time alert.updated_at %></td>
+        <td><%= alert.admin %></td>
         <td class="actions">
           <%= link_to span('Edit'), edit_alert_path(alert), :class => 'edit', :title => 'edit' %>
           <%= link_to span('Delete'), delete_alert_path(alert), :class => 'delete', :title => 'delete' %>

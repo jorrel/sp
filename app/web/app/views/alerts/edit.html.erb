@@ -1,0 +1,7 @@
+<h2>Edit this alert</h2>
+
+<% form_tag alert_path(@alert), :method => :put do %>
+  <%= render :partial => 'form' %>
+
+  <%= submit_cancel_pair %>
+<% end %>
