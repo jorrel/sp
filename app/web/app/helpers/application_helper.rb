@@ -35,6 +35,27 @@ module ApplicationHelper
     MARKUP
     concat(box, block.binding)
   end
+
+  def submit_cancel_pair(submit_name = nil, cancel_link = nil)
+    submit_name ||= infer_submit_name_from_current_action
+    cancel_link ||= url_for(:action => 'index')
+    <<-end_html
+      <div class="form-actions">
+        #{submit_tag submit_name}
+        #{span '|', :class => 'form-action-separator'}
+        <a href="#{cancel_link}">Cancel</a>
+      </div>
+    end_html
+  end
+
+  def infer_submit_name_from_current_action
+    case params[:action]
+    when 'new', 'create'      then 'Add'
+    when 'edit', 'update'     then 'Update'
+    when 'delete', 'destroy'  then 'Delete'
+    else                           'Submit'
+    end
+  end
 end
 
 #

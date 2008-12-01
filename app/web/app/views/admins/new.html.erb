@@ -3,10 +3,6 @@
 <% form_tag '/admins' do %>
   <%= render :partial => 'form' %>
 
-  <div class="form-actions">
-    <%= submit_tag 'Add' %>
-    |
-    <a href="/admins">Cancel</a>
-  </div>
+  <%= submit_cancel_pair %>
 <% end %>
 

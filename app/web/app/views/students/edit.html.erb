@@ -3,9 +3,5 @@
 <% form_tag student_path(@student), :method => :put do %>
   <%= render :partial => 'form' %>
 
-  <div class="form-actions">
-    <%= submit_tag 'Update' %>
-    |
-    <a href="/students">Cancel</a>
-  </div>
+  <%= submit_cancel_pair %>
 <% end %>

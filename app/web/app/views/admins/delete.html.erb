@@ -4,11 +4,7 @@
   <% form_tag admin_path(@admin), :method => :delete do %>
     <label>Really delete this record?</label>
 
-    <div class="form-actions">
-      <%= submit_tag 'Delete' %>
-      |
-      <a href="/admins">Cancel</a>
-    </div>
+    <%= submit_cancel_pair %>
   <% end %>
 <% end %>
 

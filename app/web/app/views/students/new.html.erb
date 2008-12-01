@@ -8,10 +8,6 @@
 <% form_tag '/students' do %>
   <%= render :partial => 'form' %>
 
-  <div class="form-actions">
-    <%= submit_tag 'Add' %>
-    |
-    <a href="/students">Cancel</a>
-  </div>
+  <%= submit_cancel_pair %>
 <% end %>
 
