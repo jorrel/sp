@@ -103,6 +103,10 @@ form .form-actions a {
   text-decoration: none;
   padding: 10px;
 }
+form .form-actions span.form-action-separator {
+  color: #BBBBBB;
+  font-size: 12pt;
+}
 
 
 
