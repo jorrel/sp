@@ -88,6 +88,21 @@ form span.form-field-hint:before {
 form span.form-field-hint:after {
   content: ')'
 }
+form .form-actions input {
+  background-color: transparent;
+  border: 0;
+  font-family: Verdana,Helvetica;
+  font-size: 12pt;
+  color: #93B21A;
+  cursor: pointer;
+  padding: 10px;
+}
+form .form-actions a {
+  font-family: Verdana,Helvetica;
+  font-size: 12pt;
+  text-decoration: none;
+  padding: 10px;
+}
 
 
 
