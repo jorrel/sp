@@ -11,7 +11,6 @@ class ApplicationController < ActionController::Base
 
   layout 'layout'
 
-  rescue_from ActiveRecord::RecordNotFound, :with => :page_not_found
   rescue_from ActiveRecord::RecordInvalid, :with => :record_invalid
 
   protected
@@ -24,10 +23,6 @@ class ApplicationController < ActionController::Base
       !! (logged_in? and current_admin.superadmin?)
     end
     helper_method :superadmin?
-
-    def page_not_found(exception)
-      render :text => File.read(File.join(RAILS_ROOT, 'public', '404.html'))
-    end
 
     def record_invalid(exception)
       case params[:action]
