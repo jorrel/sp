@@ -1,6 +1,8 @@
 class Alert < ActiveRecord::Base
   belongs_to :admin
 
+  validates_presence_of :message, :target_id, :target_type, :admin_id
+
   TargetTypesForDropDown = %w(Student Personnel)
 
   def target_class

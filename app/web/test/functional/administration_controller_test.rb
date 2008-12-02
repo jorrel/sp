@@ -6,6 +6,7 @@ class AdministrationControllerTest < ActionController::TestCase
     as_superadmin
     get :index
     assert_response :success
+    assert_template 'index'
   end
 
   def test_index_as_non_super

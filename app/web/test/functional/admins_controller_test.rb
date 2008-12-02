@@ -26,14 +26,15 @@ class AdminsControllerTest < ActionController::TestCase
 
   def test_index_as_non_super
     get :index
-    assert_template 'index'
     assert_response :success
+    assert_template 'index'
   end
 
   def test_new
     as_superadmin
     get :new
     assert_response :success
+    assert_template 'new'
   end
 
   def test_new_as_non_super
@@ -69,6 +70,7 @@ class AdminsControllerTest < ActionController::TestCase
     as_superadmin
     get :edit, :id => Admin.fake!.id
     assert_response :success
+    assert_template 'edit'
   end
 
   def test_edit_as_non_super
@@ -110,6 +112,7 @@ class AdminsControllerTest < ActionController::TestCase
     admin = Admin.fake!
     get :delete, :id => admin.id
     assert_response :success
+    assert_template 'delete'
   end
 
   def test_destroy

@@ -50,3 +50,15 @@ Student.fake_attrs do
     :student_id => Faker.numerify("#{(2000..2008).to_a.rand}#####")
   }
 end
+
+Alert.fake_attrs do
+  target_class = [Personnel, Student].rand
+  target = target_class.random || target_class.fake!
+  admin = Admin.random || Admin.fake!
+  {
+    :target_type => target_class.name,
+    :target_id => target.id,
+    :admin_id => admin.id,
+    :message => Faker::Lorem.sentences((2..5).to_a.rand).join("\n")
+  }
+end
