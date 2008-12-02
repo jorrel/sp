@@ -1,10 +1,10 @@
 class StudentsController < ApplicationController
   before_filter :find_student, :only => [:show, :edit, :update, :delete, :destroy]
-  before_filter :require_superadmin, :only => [:new, :create, :edit, :delete, :destroy]
+  before_filter :require_superadmin, :only => [:new, :create, :edit, :update, :delete, :destroy]
 
   def index
     @students = paginate :students, :order => 'last_name, first_name, middle_name'
-    fresh_when :etag => @students, :last_modified => @students.map(&:updated_at).compact.sort.last.utc
+    fresh_when :etag => @students, :last_modified => @students.map(&:updated_at).compact.sort.last.utc if @students.any?
   end
 
   def new

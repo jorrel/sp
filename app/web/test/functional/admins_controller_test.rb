@@ -101,24 +101,38 @@ class AdminsControllerTest < ActionController::TestCase
 
   def test_update_as_non_super
     admin = Admin.fake!
+    orig_login = admin.login
     assert_no_difference 'Admin.count' do
       put :update, :id => admin.id, :admin => {:login => 'new_login'}
       assert_response :redirect
+      assert_equal orig_login, admin.reload.login
     end
   end
 
   def test_delete
     as_superadmin
-    admin = Admin.fake!
-    get :delete, :id => admin.id
+    get :delete, :id => Admin.fake!.id
     assert_response :success
     assert_template 'delete'
+  end
+
+  def test_delete_as_non_super
+    get :delete, :id => Admin.fake!.id
+    assert_response :redirect
   end
 
   def test_destroy
     as_superadmin
     admin = Admin.fake!
     assert_difference 'Admin.count', -1 do
+      delete :destroy, :id => admin.id
+      assert_response :redirect
+    end
+  end
+
+  def test_destroy_as_non_super
+    admin = Admin.fake!
+    assert_no_difference 'Admin.count' do
       delete :destroy, :id => admin.id
       assert_response :redirect
     end
