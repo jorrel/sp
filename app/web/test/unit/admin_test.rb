@@ -34,12 +34,12 @@ class AdminTest < ActiveSupport::TestCase
     end
   end
 
-  def test_should_require_email
-    assert_no_difference 'Admin.count' do
-      u = create_admin(:email => nil)
-      assert u.errors.on(:email)
-    end
-  end
+#   def test_should_require_email
+#     assert_no_difference 'Admin.count' do
+#       u = create_admin(:email => nil)
+#       assert u.errors.on(:email)
+#     end
+#   end
 
   def test_should_reset_password
     admins(:quentin).update_attributes(:password => 'new password', :password_confirmation => 'new password')

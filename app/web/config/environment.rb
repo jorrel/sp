@@ -66,8 +66,5 @@ Rails::Initializer.run do |config|
   # config.active_record.observers = :cacher, :garbage_collector
 end
 
-require 'core_enrichment'
-require 'active_record_enrichment'
-
 ListSorting.encoded = true
 ListSorting.sort_parameter = :s
