@@ -12,8 +12,10 @@ ActionController::Routing::Routes.draw do |map|
   #
   # Developer Routes (for testing and stuff)
   #
-  map.with_options :controller => 'dev', :path_prefix => 'dev' do |dev|
-    dev.flash '/flash/:level/:message', :action => 'demo_flash' #, :controller => 'dev', :path_prefix => 'dev'
+  unless Rails.env == 'production'
+    map.with_options :controller => 'dev', :path_prefix => 'dev' do |dev|
+      dev.flash '/flash/:level/:message', :action => 'demo_flash'
+    end
   end
 
 
