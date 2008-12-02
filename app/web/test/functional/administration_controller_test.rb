@@ -1,8 +1,15 @@
-require 'test_helper'
+require File.dirname(__FILE__) + '/../test_helper'
+require 'administration_controller'
 
 class AdministrationControllerTest < ActionController::TestCase
-  # Replace this with your real tests.
-  def test_truth
-    assert true
+  def test_index
+    as_superadmin
+    get :index
+    assert_response :success
+  end
+
+  def test_index_as_non_super
+    get :index
+    assert_response :redirect
   end
 end

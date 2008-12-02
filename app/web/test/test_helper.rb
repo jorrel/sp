@@ -39,7 +39,7 @@ class Test::Unit::TestCase
 
   include AuthenticatedTestHelper
 
-  def as_superuser
+  def as_superadmin
     prev = @request.session[:admin_id]
     login_as :quentin
     if block_given?
