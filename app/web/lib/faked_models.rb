@@ -16,10 +16,12 @@ end
 
 Admin.fake_attrs do
   personnel = Personnel.random || Personnel.fake!
+  password = personnel.first_name.underscore
+  password += Faker.letterify('?' * (6 - password.size)) if password.size < 6 # make sure we have at least six chars for password
   {
     :login => personnel.first_name.underscore,
-    :password => personnel.first_name.underscore,
-    :password_confirmation => personnel.first_name.underscore,
+    :password => password,
+    :password_confirmation => password,
     :superadmin => [false,false,false,false,true].rand,
     :personnel_id => personnel.personnel_id
   }

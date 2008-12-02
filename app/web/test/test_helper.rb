@@ -1,6 +1,7 @@
 ENV["RAILS_ENV"] = "test"
 require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 require 'test_help'
+require 'faked_models'
 
 class Test::Unit::TestCase
   # Transactional fixtures accelerate your tests by wrapping each test method
@@ -35,4 +36,15 @@ class Test::Unit::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+
+  include AuthenticatedTestHelper
+
+  def as_superuser
+    prev = @request.session[:admin_id]
+    login_as :quentin
+    if block_given?
+      yield
+      @request.session[:admin_id] = prev
+    end
+  end
 end
