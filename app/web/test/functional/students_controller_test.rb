@@ -41,6 +41,15 @@ class StudentsControllerTest < ActionController::TestCase
     end
   end
 
+  def test_create_validation_failure
+    as_superadmin
+    assert_no_difference 'Student.count' do
+      post :create, :student => {}
+      assert_response :success
+      assert_template 'new'
+    end
+  end
+
   def test_create_as_non_super
     student = Student.fake
     assert_no_difference 'Student.count' do
@@ -69,6 +78,18 @@ class StudentsControllerTest < ActionController::TestCase
       put :update, :id => student.student_id, :student => {:first_name => new_first_name}
       assert_response :redirect
       assert_equal new_first_name, student.reload.first_name
+    end
+  end
+
+  def test_update_validation_failure
+    as_superadmin
+    student = Student.fake!
+    orig_first_name = student.first_name
+    assert_no_difference 'Student.count' do
+      put :update, :id => student.student_id, :student => {:first_name => ''}
+      assert_response :success
+      assert_template 'edit'
+      assert_equal orig_first_name, student.reload.first_name
     end
   end
 

@@ -2,6 +2,8 @@ class Terminal < ActiveRecord::Base
   validates_presence_of :name, :ip_address, :college
   validates_uniqueness_of :ip_address
   validates_uniqueness_of :name, :scope => :college
+  validates_length_of :name, :maximum => 30
+  validates_length_of :college, :maximum => 10
 
   octet = /[01]?[0-9]{1,2}|2[0-4][0-9]|25[0-5]/
   IPv4_Address = /^(#{octet}\.){3}#{octet}$/
