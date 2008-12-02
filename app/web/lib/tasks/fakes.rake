@@ -1,4 +1,5 @@
 require 'spinner'
+require 'environment'
 require 'faked_models'
 
 namespace :fakes do

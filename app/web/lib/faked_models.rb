@@ -3,7 +3,6 @@
 # generating fake records
 #
 
-require 'environment'
 require 'fakerizer'
 
 Personnel.fake_attrs do
@@ -16,7 +15,7 @@ Personnel.fake_attrs do
 end
 
 Admin.fake_attrs do
-  personnel = Personnel.random
+  personnel = Personnel.random || Personnel.fake!
   {
     :login => personnel.first_name.underscore,
     :password => personnel.first_name.underscore,
