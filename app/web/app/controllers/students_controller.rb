@@ -16,7 +16,7 @@ class StudentsController < ApplicationController
       redirect_to :action => :edit
       return
     end
-    redirect_to :action => :list
+    redirect_to :action => :index
   end
 
   def create

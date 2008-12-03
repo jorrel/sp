@@ -24,6 +24,7 @@ class AlertsControllerTest < ActionController::TestCase
     assert_difference 'Alert.count' do
       post :create, :alert => alert.attributes
       assert_response :redirect
+      assert_equal current_admin, Alert.recent.admin
     end
   end
 
@@ -75,6 +76,19 @@ class AlertsControllerTest < ActionController::TestCase
       delete :destroy, :id => alert.id
       assert_response :redirect
     end
+  end
+
+  def test_update_form
+    xhr :post, :update_form, :target_type => 'Personnel'
+    assert_response :success
+    assert_template 'update_form'
+    assert_select_rjs :replace, 'target_form'
+  end
+
+  def test_by_admin
+    get :by_admin, :login => 'aaron'
+    assert_response :success
+    assert_template 'by_admin'
   end
 
 end

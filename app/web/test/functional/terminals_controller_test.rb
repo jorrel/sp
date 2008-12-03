@@ -29,7 +29,7 @@ class TerminalsControllerTest < ActionController::TestCase
 
   def test_new_as_non_super
     get :new
-    assert_response :redirect
+    assert_blocked_from_superadmin_page
   end
 
   def test_create
@@ -54,8 +54,22 @@ class TerminalsControllerTest < ActionController::TestCase
     terminal = Terminal.fake
     assert_no_difference 'Terminal.count' do
       post :create, :terminal => terminal.attributes
-      assert_response :redirect
+      assert_blocked_from_superadmin_page
     end
+  end
+
+  def test_show
+    as_superadmin
+    terminal = Terminal.fake!
+    get :show, :id => terminal.id
+    assert_response :redirect
+    assert_redirected_to :action => :edit, :id => terminal.id
+  end
+
+  def test_show_as_non_super
+    terminal = Terminal.fake!
+    get :show, :id => terminal.id
+    assert_blocked_from_superadmin_page
   end
 
   def test_edit
@@ -67,7 +81,7 @@ class TerminalsControllerTest < ActionController::TestCase
 
   def test_edit_as_non_super
     get :edit, :id => Terminal.fake!.id
-    assert_response :redirect
+    assert_blocked_from_superadmin_page
   end
 
   def test_update
@@ -98,7 +112,7 @@ class TerminalsControllerTest < ActionController::TestCase
     orig_name = terminal.name
     assert_no_difference 'Terminal.count' do
       put :update, :id => terminal.id, :terminal => {:name => ''}
-      assert_response :redirect
+      assert_blocked_from_superadmin_page
       assert_equal orig_name, terminal.reload.name
     end
   end
@@ -112,7 +126,7 @@ class TerminalsControllerTest < ActionController::TestCase
 
   def test_delete_as_non_super
     get :delete, :id => Terminal.fake!.id
-    assert_response :redirect
+    assert_blocked_from_superadmin_page
   end
 
   def test_destroy
@@ -128,7 +142,7 @@ class TerminalsControllerTest < ActionController::TestCase
     terminal = Terminal.fake!
     assert_no_difference 'Terminal.count' do
       delete :destroy, :id => terminal.id
-      assert_response :redirect
+      assert_blocked_from_superadmin_page
     end
   end
 

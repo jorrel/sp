@@ -39,7 +39,20 @@ class AdminsControllerTest < ActionController::TestCase
 
   def test_new_as_non_super
     get :new
+    assert_blocked_from_superadmin_page
+  end
+
+  def test_show
+    as_superadmin
+    admin = Admin.fake!
+    get :show, :id => admin.id
     assert_response :redirect
+    assert_redirected_to :action => :edit, :id => admin.id
+  end
+
+  def test_show_as_non_super
+    get :show, :id => Admin.fake!.id
+    assert_blocked_from_superadmin_page
   end
 
   def test_create
@@ -62,7 +75,7 @@ class AdminsControllerTest < ActionController::TestCase
   def test_create_as_non_super
     assert_no_difference 'Admin.count' do
       post :create, :admin => ValidParameters
-      assert_response :redirect
+      assert_blocked_from_superadmin_page
     end
   end
 
@@ -75,7 +88,7 @@ class AdminsControllerTest < ActionController::TestCase
 
   def test_edit_as_non_super
     get :edit, :id => Admin.fake!.id
-    assert_response :redirect
+    assert_blocked_from_superadmin_page
   end
 
   def test_update
@@ -104,7 +117,7 @@ class AdminsControllerTest < ActionController::TestCase
     orig_login = admin.login
     assert_no_difference 'Admin.count' do
       put :update, :id => admin.id, :admin => {:login => 'new_login'}
-      assert_response :redirect
+      assert_blocked_from_superadmin_page
       assert_equal orig_login, admin.reload.login
     end
   end
@@ -134,7 +147,7 @@ class AdminsControllerTest < ActionController::TestCase
     admin = Admin.fake!
     assert_no_difference 'Admin.count' do
       delete :destroy, :id => admin.id
-      assert_response :redirect
+      assert_blocked_from_superadmin_page
     end
   end
 

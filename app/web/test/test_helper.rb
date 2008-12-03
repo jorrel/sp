@@ -2,6 +2,7 @@ ENV["RAILS_ENV"] = "test"
 require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 require 'test_help'
 require 'faked_models'
+require 'action_controller/assertions'
 
 class Test::Unit::TestCase
   # Transactional fixtures accelerate your tests by wrapping each test method
@@ -43,8 +44,35 @@ class Test::Unit::TestCase
     prev = @request.session[:admin_id]
     login_as :quentin
     if block_given?
-      yield
-      @request.session[:admin_id] = prev
+      begin
+        yield
+      ensure
+        @request.session[:admin_id] = prev
+      end
     end
   end
+
+  def current_admin
+    Admin.find(@request.session[:admin_id])
+  end
+
+  def assert_blocked_from_superadmin_page
+    assert @response.flash[:warning] =~ /superadmin/
+
+    if @response.content_type == 'text/javascript'
+      assert_select_rjs :redirect_to, '/'
+    else
+      assert_response :redirect
+      assert_redirected_to '/'
+    end
+  end
+end
+
+
+#
+# Allows:
+#   assert_select_rjs :redirect_to, url_string
+#
+module ActionController::Assertions::SelectorAssertions
+  RJS_STATEMENTS[:redirect_to] = "window\\.location\\.href = #{RJS_ANY_ID}"
 end

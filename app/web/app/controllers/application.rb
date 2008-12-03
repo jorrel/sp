@@ -40,7 +40,10 @@ class ApplicationController < ActionController::Base
     def require_superadmin
       if not superadmin?
         flash[:warning] = 'The area you were trying to access required superadmin previledges'
-        redirect_to '/'
+        respond_to do |format|
+          format.html { redirect_to '/' }
+          format.js { render(:update) { |page| page.redirect_to '/' } }
+        end
       end
     end
 end

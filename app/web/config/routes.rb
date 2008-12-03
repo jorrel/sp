@@ -15,6 +15,7 @@ ActionController::Routing::Routes.draw do |map|
   unless Rails.env == 'production'
     map.with_options :controller => 'dev', :path_prefix => 'dev' do |dev|
       dev.flash '/flash/:level/:message', :action => 'demo_flash'
+      dev.super_only_action '/dev/super_only_action', :action => 'super_only_action'
     end
   end
 
