@@ -17,7 +17,7 @@ namespace :fakes do
 
   task :admins => :personnels do
     generating('admins') {
-      70.times { Admin.fake! }
+      20.times { Admin.fake! }
     }
   end
 
@@ -44,6 +44,12 @@ namespace :fakes do
     }
   end
 
-  task :all => [:admins, :admin, :terminals, :students] do
+  task :alerts do
+    generating('alerts') {
+      200.times { Alert.fake! }
+    }
+  end
+
+  task :all => [:admins, :admin, :terminals, :students, :alerts] do
   end
 end

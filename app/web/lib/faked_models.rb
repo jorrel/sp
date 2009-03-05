@@ -54,10 +54,11 @@ end
 Alert.fake_attrs do
   target_class = [Personnel, Student].rand
   target = target_class.random || target_class.fake!
+  target_id = target.is_a?(Personnel) ? target.personnel_id : target.student_id
   admin = Admin.random || Admin.fake!
   {
     :target_type => target_class.name,
-    :target_id => target.id,
+    :target_id => target_id,
     :admin_id => admin.id,
     :message => Faker::Lorem.sentences((2..5).to_a.rand).join("\n")
   }
