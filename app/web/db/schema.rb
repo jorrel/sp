@@ -24,6 +24,9 @@ ActiveRecord::Schema.define(:version => 20081104105609) do
   end
 
   add_index "admins", ["login"], :name => "index_admins_on_login", :unique => true
+  add_index "admins", ["personnel_id"], :name => "index_admins_on_personnel_id"
+  add_index "admins", ["superadmin"], :name => "index_admins_on_superadmin"
+  add_index "admins", ["updated_at"], :name => "index_admins_on_updated_at"
 
   create_table "alerts", :force => true do |t|
     t.integer  "target_id"
@@ -34,8 +37,9 @@ ActiveRecord::Schema.define(:version => 20081104105609) do
     t.datetime "updated_at"
   end
 
-  add_index "alerts", ["target_type", "target_id"], :name => "index_alerts_on_target_type_and_target_id"
   add_index "alerts", ["admin_id"], :name => "index_alerts_on_admin_id"
+  add_index "alerts", ["target_type", "target_id"], :name => "index_alerts_on_target_type_and_target_id"
+  add_index "alerts", ["updated_at"], :name => "index_alerts_on_updated_at"
 
   create_table "personnels", :force => true do |t|
     t.integer  "personnel_id",               :null => false
@@ -46,7 +50,9 @@ ActiveRecord::Schema.define(:version => 20081104105609) do
     t.datetime "updated_at"
   end
 
+  add_index "personnels", ["last_name", "first_name", "middle_name"], :name => "index_personnels_on_last_name_and_first_name_and_middle_name"
   add_index "personnels", ["personnel_id"], :name => "index_personnels_on_personnel_id", :unique => true
+  add_index "personnels", ["updated_at"], :name => "index_personnels_on_updated_at"
 
   create_table "students", :force => true do |t|
     t.integer  "student_id",                                   :null => false
@@ -58,6 +64,7 @@ ActiveRecord::Schema.define(:version => 20081104105609) do
     t.datetime "updated_at"
   end
 
+  add_index "students", ["last_name", "first_name", "middle_name"], :name => "index_students_on_last_name_and_first_name_and_middle_name"
   add_index "students", ["student_id"], :name => "index_students_on_student_id"
 
   create_table "terminals", :force => true do |t|

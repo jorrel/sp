@@ -10,7 +10,6 @@ module ApplicationHelper
   end
 
   def display_time(time, strformat = Time::DATE_FORMATS[:short])
-    time = time.in_time_zone('Asia/Manila')
     if strformat.respond_to?(:call)
       strformat.call(time).to_s
     else
